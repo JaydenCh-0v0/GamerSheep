@@ -1,5 +1,38 @@
+//Matrix-Class: Matrix Structure
+export class Matrix {
+    constructor() {
+        this.grid = [];
+    }
 
-export class Vec2d {
+    forEach(callback) {
+        this.grid.forEach((column, x) => {
+            column.forEach((value, y) => {
+                callback(value, x, y);
+            })
+        })
+    }
+
+    get(x, y) {
+        const col = this.grid[x];
+        if(col) {
+            return col[y];
+        }
+        return undefined;
+    }
+
+    set(x, y, value) {
+        if (!this.grid[x]) {
+            this.grid[x] = [];
+        }
+
+        this.grid[x][y] = value;
+    }
+}
+
+Window.Matrix = Matrix;
+
+// XY-Class: a container with x and y value
+export class XY{
     constructor(x, y) {
         this.set(x, y);
     }

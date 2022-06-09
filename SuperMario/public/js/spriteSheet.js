@@ -15,7 +15,7 @@ class SpriteSheet {
         buffer.height = height;
         buffer.getContext('2d').drawImage(
             this.image,
-            x,
+            x, 
             y,
             width,
             height,

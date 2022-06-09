@@ -1,38 +1,42 @@
-//Import
-import Compositor from './compositor.js';
-import Entity from './entity.js';
-import { createMainCharacter } from './entities.js';
-import { loadLevel } from './loaders.js';
-import { loadBackgroundSprites } from './sprite.js';
-import { createBackgroundLayer, createSpriteLayer } from './layer.js';
+//Import Class
+import Camera from './camera.js';
+import Timer from './timer.js';
 
+//Import Function
+import { loadLevel } from './loaders.js';
+import { createCollisionLayer } from './layer.js';
+import { createMario } from './entities.js';
+import { setupKeyboard } from "./input.js";
+import { setupMouseControl } from './debug.js';
+
+//Run
 const canvas = document.getElementById('screen');
 const ctx = canvas.getContext('2d');
 
 Promise.all([
-    createMainCharacter(),
-    loadBackgroundSprites(),
+    createMario(),
     loadLevel('1-1'),
 ])
-.then(([mainCharacter, backgroundSprite, level]) => {
-    const comp = new Compositor();
+.then(([mario, level]) => {
+    const camera = new Camera();
+    window.camera = camera;
 
-    const backgroundLayer = 
-        createBackgroundLayer(level.backgrounds, backgroundSprite);
-    comp.layers.push(backgroundLayer);
+    mario.pos.set(64, 64);
 
-    const gravity = .5;
+    level.comp.layers.push(createCollisionLayer(level));
 
-    const spriteLayer = createSpriteLayer(mainCharacter);
-    comp.layers.push(spriteLayer);
+    level.entities.add(mario);
 
-    function update(){
-        comp.draw(ctx);
-        //characterSprite.draw('idle', ctx, mainCharacter.pos.x, mainCharacter.pos.y);
-        mainCharacter.update();
-        mainCharacter.vel.y += gravity;
-        requestAnimationFrame(update);
+
+    const input = setupKeyboard(mario);
+    input.listenTo(window);
+
+    setupMouseControl(canvas, mario, camera);
+
+    const timer = new Timer(1/60);
+    timer.update = function update(deltaTime){
+        level.update(deltaTime);
+        level.comp.draw(ctx, camera);
     }
-
-    update();
+    timer.start();
 });

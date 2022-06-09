@@ -1,21 +1,24 @@
 import Entity from "./entity.js";
+import Velocity from "./trait/velocity.js";
+import Jump from "./trait/jump.js";
+import Go from "./trait/go.js";
+
 import { loadCharacterSprites } from './sprite.js';
 
-export function createMainCharacter() {
-    return loadCharacterSprites().then(sprite => {
-        const mainCharacter = new Entity();
-        mainCharacter.pos.set(64, 180);
-        mainCharacter.vel.set(2, -10);
-    
+export function createMario() {
+    return loadCharacterSprites()
+    .then(sprite => {
+        const mario = new Entity();
+        mario.size.set(14,16);//small:(14,16)
 
-        mainCharacter.draw = function drawMainCharacter(ctx) {
-            sprite.draw('idle', ctx, this.pos.x, this.pos.y);
+        mario.addTrait(new Go());
+        mario.addTrait(new Jump());
+        //mario.addTrait(new Velocity());
+
+        mario.draw = function drawMario(ctx) {
+            sprite.draw('idle', ctx, 0, 0);
         }
 
-        mainCharacter.update = function updateMainCharacter() {
-            this.pos.x += this.vel.x;
-            this.pos.y += this.vel.y;        
-        } 
-        return mainCharacter;
+        return mario;
     });
 }
