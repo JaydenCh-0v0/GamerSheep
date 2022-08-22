@@ -7,36 +7,57 @@ class SpriteSheet {
         this.width  = width;
         this.height = height;
         this.tiles = new Map();
+        this.animation = new Map();
     }
 
     define(name, x, y, width, height) {
-        const buffer = document.createElement('canvas');
-        buffer.width = width;
-        buffer.height = height;
-        buffer.getContext('2d').drawImage(
-            this.image,
-            x, 
-            y,
-            width,
-            height,
-            0,
-            0,
-            width,
-            height
-        );
-        this.tiles.set(name, buffer);
+        const buffers = [false, true].map( flip => {
+            const buffer = document.createElement('canvas');
+            buffer.width = width;
+            buffer.height = height;
+
+            const ctx = buffer.getContext('2d');
+
+            if (flip) {
+                ctx.scale(-1, 1);
+                ctx.translate(-width, 0);
+            }
+
+            ctx.drawImage(
+                this.image,
+                x, 
+                y,
+                width,
+                height,
+                0,
+                0,
+                width,
+                height
+            );
+            return buffer;
+        });
+        this.tiles.set(name, buffers);
     }
 
     defineTile(name, x, y) {
         this.define(name, x * this.width, y * this.height, this.width, this.height);
     }
 
-    draw(name, ctx, x, y) {
-        const buffer = this.tiles.get(name);
+    defineAnime(name, animation) {
+        this.animation.set(name, animation);
+    }
+
+    draw(name, ctx, x, y, flip = false) {
+        const buffer = this.tiles.get(name)[flip? 1: 0];
         ctx.drawImage(buffer, x, y);
     }
 
     drawTile(name, ctx, x, y){
         this.draw(name, ctx, x * this.width, y * this.height);
+    }
+    
+    drawAnime(name, ctx, x, y, distance) {
+        const animation = this.animation.get(name);
+        this.drawTile(animation(distance), ctx, x, y);
     }
 }

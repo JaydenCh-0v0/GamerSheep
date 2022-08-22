@@ -1,17 +1,40 @@
+import TileResolver from "./tileResolver.js";
 
-export function createBackgroundLayer(level, sprites) {
+export function createBackgroundLayer(level, tiles, sprites) {
+    const resolver = new TileResolver(tiles);
     const buffer = document.createElement('canvas');
-    buffer.width = 2048;
+    buffer.width = 256 + 16;
     buffer.height = 240;
 
     const ctx = buffer.getContext('2d');
-    
-    level.tiles.forEach((tile, x, y) => {
-            sprites.drawTile(tile.name, ctx, x, y);
-    })
+
+    function redraw(startIndex, endIndex) {
+        ctx.clearRect(0, 0, buffer.width, buffer.height);
+        for(let x = startIndex; x <= endIndex; x++){
+            const col = tiles.grid[x];
+            if(col){
+                col.forEach((tile, y) => {
+                    if (tile.name === 'chance') {
+                        sprites.drawAnime(tile.name, ctx, x - startIndex, y, level.totalTime);
+                    } else {
+                        sprites.drawTile(tile.name, ctx, x - startIndex, y);
+                    }
+                })
+            }
+        }
+    }
 
     return function drawBackgroundLayer(ctx, camera) {
-        ctx.drawImage(buffer, -camera.pos.x, -camera.pos.y);
+        const drawWidth = resolver.toIndex(camera.size.x);
+        const drawFrom = resolver.toIndex(camera.pos.x);
+        const drawTo = drawFrom + drawWidth;
+        redraw(drawFrom, drawTo);
+
+        ctx.drawImage(
+            buffer, 
+            -camera.pos.x % 16, 
+            -camera.pos.y
+        );
     }
 }
 
@@ -49,6 +72,7 @@ export function createCollisionLayer(level) {
     
 
     return function drawCollision(ctx, camera) {
+        // 角色影響格
         ctx.strokeStyle = 'blue';
         resolvedTiles.forEach(({x, y}) => {
             //console.log('Would draw', x, y);
@@ -62,12 +86,13 @@ export function createCollisionLayer(level) {
             ctx.stroke();
         });
 
+        // 角色碰撞格
         ctx.strokeStyle = 'red';
         level.entities.forEach(entity => {
             ctx.beginPath();
             ctx.rect(
-                entity.pos.x - camera.pos.x, 
-                entity.pos.y - camera.pos.y, 
+                entity.bounds.left - camera.pos.x, 
+                entity.bounds.top - camera.pos.y, 
                 entity.size.x, 
                 entity.size.y
                 );
@@ -75,5 +100,19 @@ export function createCollisionLayer(level) {
         });
 
         resolvedTiles.length = 0;
+    }
+}
+
+export function createCameraLayer(cameraToDraw){
+    return function drawCameraRect(ctx, fromCamera) {
+        ctx.strokeStyle = 'purple';
+        ctx.beginPath();
+        ctx.rect(
+            cameraToDraw.pos.x - fromCamera.pos.x, 
+            cameraToDraw.pos.y - fromCamera.pos.y, 
+            cameraToDraw.size.x, 
+            cameraToDraw.size.y
+            );
+        ctx.stroke();
     }
 }

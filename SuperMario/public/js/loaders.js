@@ -1,6 +1,6 @@
-import Level from "./level.js";
-import { createBackgroundLayer, createSpriteLayer } from "./layer.js";
-import { loadBackgroundSprites } from './sprite.js';
+
+import SpriteSheet from "./spriteSheet.js";
+import { createAnime } from "./anime.js";
 
 //Game Loader
 export function loadImage(url) {
@@ -13,52 +13,43 @@ export function loadImage(url) {
     });
 }
 
-function createTiles(level, backgrounds) {
-    function applyRange(bgd, xStart, xLen, yStart, yLen) {
-        const xEnd = xStart + xLen;
-        const yEnd = yStart + yLen;
+export function loadJSON(url) { return fetch(url).then(r => r.json()); }
 
-        for (let i = xStart; i < xEnd; i++) {
-            for (let j = yStart; j < yEnd; j++) {
-                level.tiles.set(i, j, {
-                    name: bgd.tile,
-                });
-            }
+export function loadSpriteSheet(name) {
+    return loadJSON(`../js/sprites/${name}.json`)
+    .then(sheetSpec => Promise.all([
+        sheetSpec,
+        loadImage(sheetSpec.imageURL)
+    ]))
+    .then(([sheetSpec, img]) => {
+        const sprites = new SpriteSheet(
+            img, 
+            sheetSpec.tileW, 
+            sheetSpec.tileH
+        );
+        if(sheetSpec.tiles){
+            sheetSpec.tiles.forEach(tileSpec => {
+                sprites.defineTile(
+                    tileSpec.name, 
+                    tileSpec.index[0], 
+                    tileSpec.index[1]
+                    );
+            });
         }
-    }
+        
+        if(sheetSpec.frames) {
+            sheetSpec.frames.forEach(frameSpec => {
+                sprites.define( frameSpec.name, ...frameSpec.rect );
+            });
+        }
 
-    backgrounds.forEach(bgd => {
-        bgd.ranges.forEach(range => {
-            if (range.length === 4) {
-                const [xStart, xLen, yStart, yLen] = range;
-                applyRange(bgd, xStart, xLen, yStart, yLen);
-            } else if (range.length === 3) {
-                const [xStart, xLen, yStart] = range;
-                applyRange(bgd, xStart, xLen, yStart, 1);
-            } else if (range.length === 2) {
-                const [xStart, yStart] = range;
-                applyRange(bgd, xStart, 1, yStart, 1);
-            }
-        });
-    })
-}
+        if(sheetSpec.animations) {
+            sheetSpec.animations.forEach(animeSpec => {
+                const animation = createAnime(animeSpec.frames, animeSpec.frameLen);
+                sprites.defineAnime(animeSpec.name, animation);
+            });
+        }
 
-export function loadLevel(name) {
-    return Promise.all([
-        fetch(`../src/levels/${name}.json`).then( r => r.json() ),
-        loadBackgroundSprites(),
-    ])
-    .then(([ LevelSpec, backgroundSprite ] ) => {
-        const level = new Level();
-
-        createTiles(level, LevelSpec.backgrounds);
-
-        const backgroundLayer = createBackgroundLayer(level, backgroundSprite);
-        level.comp.layers.push(backgroundLayer);
-
-        const spriteLayer = createSpriteLayer(level.entities);
-        level.comp.layers.push(spriteLayer);
-
-        return level;
+        return sprites;
     })
 }
