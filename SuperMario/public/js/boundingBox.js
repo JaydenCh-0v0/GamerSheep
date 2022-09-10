@@ -5,14 +5,14 @@ export default class BoundingBox {
         this.offset = offset;
     }
 
-    get bottom() {
-        return this.pos.y + this.size.y + this.offset.y;
+    overlaps(box) {
+        return this.top < box.bottom 
+            && this.bottom > box.top 
+            && this.left < box.right 
+            && this.right > box.left;
     }
 
-    set bottom(y) {
-        this.pos.y = y - (this.size.y + this.offset.y);
-    }
-
+    // TOP BOUND 
     get top() {
         return this.pos.y + this.offset.y;
     }
@@ -21,6 +21,16 @@ export default class BoundingBox {
         this.pos.y = y - this.offset.y;
     }
 
+    // BOTTOM BOUND
+    get bottom() {
+        return this.pos.y + this.size.y + this.offset.y;
+    }
+
+    set bottom(y) {
+        this.pos.y = y - (this.size.y + this.offset.y);
+    }
+
+    // LEFT BOUND
     get left() {
         return this.pos.x + this.offset.x;
     }
@@ -29,6 +39,7 @@ export default class BoundingBox {
         this.pos.x = x - this.offset.x;
     }
 
+    // RIGHT BOUND
     get right() {
         return this.pos.x + this.size.x + this.offset.x;
     }
@@ -36,4 +47,5 @@ export default class BoundingBox {
     set right(x) {
         this.pos.x = x - (this.size.x + this.offset.x);
     }
+
 }

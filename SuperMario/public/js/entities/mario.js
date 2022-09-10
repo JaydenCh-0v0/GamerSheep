@@ -1,7 +1,12 @@
 //Import Class
-import Entity from "../entity.js";
-import Jump from "../trait/jump.js";
+import Entity, { Trait } from "../entity.js";
+
+//Import Traits
 import Go from "../trait/go.js";
+import Jump from "../trait/jump.js";
+import Stomper from "../trait/stomper.js";
+import Killable from "../trait/killable.js";
+import PlayerController from "../trait/playerController.js";
 
 //Import Function
 import { loadSpriteSheet } from "../loaders.js";
@@ -9,7 +14,6 @@ import { loadSpriteSheet } from "../loaders.js";
 //Mario's Value
 const SLOW_DRAG = 1/1000;
 const FAST_DRAG = 1/5000;
-const FRAME_LEN = 8;
 
 //Public:
 export function loadMario() {
@@ -45,15 +49,21 @@ function createMarioFactory(sprite) {
     return function createMario() {
         const mario = new Entity();
         mario.size.set(14, 16); // small:(14,16)
-
+        
+        // add traits
         mario.addTrait(new Go());
         mario.addTrait(new Jump());
-
+        mario.addTrait(new Stomper());
+        mario.addTrait(new Killable());
+        mario.killable.removeAfter = 0;
+        mario.addTrait(new PlayerController());
+        mario.playerController.setPlayer(mario);
+        
         mario.turbo = setTurboState;
         mario.draw = drawMario;
 
         mario.turbo(false);
-
+        
         return mario;
     }
 }

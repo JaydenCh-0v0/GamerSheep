@@ -13,13 +13,15 @@ export class Trait {
     constructor(name) {
         this.NAME = name;
     }
-
-    obstruct() {
+    collides(us, them) {
+        
+    }
+    obstruct() { 
 
     }
 
-    update() {
-        console.warn('Unhandle update call in Trait');
+    update() { 
+        
     }
 }
 
@@ -41,15 +43,25 @@ export default class Entity{
         this[trait.NAME] = trait;
     }
 
+    collides(candidate) {
+        this.traits.forEach(trait => {
+            trait.collides(this, candidate);
+        });
+    }
+
     obstruct(side) {
         this.traits.forEach(trait => {
             trait.obstruct(this, side);
         });
     }
 
-    update(deltaTime) {
+    draw() {
+        
+    }
+
+    update(deltaTime, level) {
         this.traits.forEach(trait => {
-            trait.update(this, deltaTime);
+            trait.update(this, deltaTime, level);
         });
         this.lifetime += deltaTime;
     }

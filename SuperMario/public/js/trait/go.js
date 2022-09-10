@@ -1,4 +1,4 @@
-import { Trait } from "../entity.js";
+import { Sides, Trait } from "../entity.js";
 
 export default class Go extends Trait {
     constructor() {

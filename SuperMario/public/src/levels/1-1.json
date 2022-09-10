@@ -367,6 +367,14 @@
         {
             "name": "goomba",
             "pos": [14, 10]
+        },
+        {
+            "name": "goomba",
+            "pos": [21, 10]
+        },
+        {
+            "name": "goomba",
+            "pos": [23, 10]
         }
     ]
 }

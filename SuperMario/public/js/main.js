@@ -1,6 +1,8 @@
 //Import Class
 import Camera from './camera.js';
 import Timer from './timer.js';
+import Entity from './entity.js';
+import PlayerController from './trait/playerController.js';
 
 //Import Function
 import { createLevelLoader } from './loaders/level.js';
@@ -14,6 +16,15 @@ const canvas = document.getElementById('screen');
 let debug = false;
 //debug = true;
 
+function createPlayerEnv(playerEntity) {
+    const playerEnv = new Entity();
+    const playerControl = new PlayerController();
+    playerControl.checkpoint.set(64, 64);
+    playerControl.setPlayer(playerEntity);
+    playerEnv.addTrait(playerControl);
+    return playerEnv;
+}
+
 async function main(canvas) {
     const ctx = canvas.getContext('2d');
     const entityFactory = await loadEntities();
@@ -23,30 +34,18 @@ async function main(canvas) {
 
     // tyr to say Hello world
     ctx.font = "20px Arial";
-    ctx.fillText("Super Mario project", 300, 50)
+    //ctx.fillText("Super Holomem project", 300, 50)
 
     const mario = entityFactory.mario();
-    mario.pos.set(4*16, 4*16);
-    level.entities.add(mario);
 
-    mario.addTrait({
-        NAME: 'hacktrait',
-        obstruct() {
-                
-        },
-        update(mario, deltaTime) {
-
-        }
-    })
+    const playerEnv = createPlayerEnv(mario);
+    level.entities.add(playerEnv);
 
     if(debug) {
-        level.comp.layers.push(
-            createCollisionLayer(level),
-            createCameraLayer(camera)
-        );
+        level.comp.layers.push(createCameraLayer(camera));
+        level.comp.layers.push(createCollisionLayer(level))
     }
 
-    level.comp.layers.push(createCollisionLayer(level))
     const input = setupKeyboard(mario);
     input.listenTo(window);
 
@@ -57,7 +56,7 @@ async function main(canvas) {
         level.update(deltaTime);
 
         if (mario.pos.x > 100) {
-            camera.pos.x = mario.pos.x - 100;
+            camera.pos.x = Math.max(0, mario.pos.x - 100);
         }
 
         level.comp.draw(ctx, camera);
