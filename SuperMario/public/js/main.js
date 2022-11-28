@@ -14,7 +14,7 @@ import { loadEntities } from './entities.js';
 //Run
 const canvas = document.getElementById('screen');
 let debug = false;
-//debug = true;
+debug = true;
 
 function createPlayerEnv(playerEntity) {
     const playerEnv = new Entity();
@@ -42,14 +42,14 @@ async function main(canvas) {
     level.entities.add(playerEnv);
 
     if(debug) {
-        level.comp.layers.push(createCameraLayer(camera));
+        //level.comp.layers.push(createCameraLayer(camera));
         level.comp.layers.push(createCollisionLayer(level))
     }
 
     const input = setupKeyboard(mario);
     input.listenTo(window);
 
-    if (debug) setupMouseControl(canvas, mario, camera);
+    //if (debug) setupMouseControl(canvas, mario, camera);
 
     const timer = new Timer(1/60);
     timer.update = function update(deltaTime){

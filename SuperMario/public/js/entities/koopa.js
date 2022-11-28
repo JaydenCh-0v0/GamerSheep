@@ -1,7 +1,7 @@
 import Entity, { Trait } from '../entity.js';
 import PendulumWalk from '../trait/pendulumWalk.js';
 import Killable from '../trait/killable.js';
-import Stomper from '../trait/stomper.js';
+//import Stomper from '../trait/stomper.js';
 import {loadSpriteSheet} from '../loaders.js';
 
 export function loadKoopa() {
@@ -23,10 +23,10 @@ class Behavior extends Trait {
 
     collides(koopa, player) {
         if (koopa.killable.dead) return;
+
         if (player.stomper) {
             if (player.vel.y > koopa.vel.y) {
                 this.handleStomp(koopa, player);
-                player.stomper.bounce();
             } else {
                 player.killable.kill();
             }
@@ -36,6 +36,9 @@ class Behavior extends Trait {
     handleStomp(us, them) {
         if (this.state === STATE_WALKING) {
             this.hide(us);
+        } else if (this.state === STATE_HIDING) {
+            us.killable.kill();
+            us.vel.set(100, -200);
         }
     }
 

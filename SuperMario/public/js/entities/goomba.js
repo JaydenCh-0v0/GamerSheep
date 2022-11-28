@@ -17,7 +17,6 @@ class Behavior extends Trait {
         if (goomba.killable.dead) return;
         if (player.stomper) {
             if (player.vel.y > goomba.vel.y) {
-                player.stomper.bounce();
                 goomba.killable.kill();
                 goomba.pendulumWalk.disable();
             } else {
