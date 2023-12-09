@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { row:  0, col: -1 }, { row:  0, col: +1 },
         { row: +1, col:  0 }, { row: +1, col: +1 },
     ];
-    if (row%2==0) 
+    if (row % 2 == 0) 
         offsets = offsets_RowEven;
     else
         offsets = offsets_RowOdd;
@@ -109,6 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
         hexagonRow.classList.add('hexagon-row');
         if (row % 2 !== 0) hexagonRow.classList.add('even');
       for (let col = 0; col < numCols; col++) {
+
         const cell = grid[row][col];
         const hexagon = document.createElement('div');
         hexagon.classList.add('hexagon');
@@ -126,7 +127,17 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (cell.question) {
           hexagon.classList.add('question');
           hexagon.innerHTML = '&#63;'; // Question mark emoji
+        } else if (cell.closed) {
+          hexagon.classList.add('closed');
+        } else {
+          hexagon.classList.add('openable');
         }
+
+        hexagon.addEventListener("mouseover", function(event) {
+          if (event.shiftKey) { //Shift + RGBY XW
+            hexagon.style.backgroundColor = getRandomRGBColor();
+          }
+        });
         hexagon.addEventListener('click', () => {
           if (!gameOver && !cell.opened && !cell.flagged) {
             openCell(row, col);
@@ -138,10 +149,19 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleFlag(row, col);
           }
         });
+
         hexagonRow.appendChild(hexagon);
       }
       gameBoard.appendChild(hexagonRow);
     }
+  }
+
+  // Generate a random RGB color
+  function getRandomRGBColor() {
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    return `rgb(${r}, ${g}, ${b})`;
   }
 
   function openCell(row, col) {
@@ -185,6 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function revealMines() {
     for (let row = 0; row < numRows; row++) {
       for (let col = 0; col < numCols; col++) {
+        grid[row][col].closed = true;
         if (grid[row][col].mine) {
           grid[row][col].opened = true;
         }
