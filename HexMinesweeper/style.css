@@ -16,7 +16,7 @@
 /* Game board container */
 #game-board {
   display: grid;
-  grid-template-rows: repeat(17, 44px);
+  grid-template-rows: repeat(16, 44px);
   flex-wrap: wrap;
   width: 800px;
   margin: 0 auto;
@@ -30,7 +30,7 @@
   background-color: #ddd;
   /* the hexagon color */
   margin: -5px;
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  clip-path: polygon(50% 1%, 100% 25%, 100% 75%, 50% 100%, 1% 75%, 1% 25%);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -44,13 +44,13 @@
 
 .hexagon-row {
   display: grid;
-  grid-template-columns: repeat(17, 50px);
+  grid-template-columns: repeat(16, 50px);
   clear: left;
 }
 
 .hexagon-row.even {
   display: grid;
-  grid-template-columns: repeat(17, 50px);
+  grid-template-columns: repeat(16, 50px);
   margin-left: 25px;
 }
 
