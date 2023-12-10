@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let flags = 0;
   let openCells = 0;
   let gameOver = false;
+  let colorKeyPressed = "";
 
   function initializeGame() {
     generateGrid();
@@ -138,6 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
             hexagon.style.backgroundColor = getRandomRGBColor();
           }
         });
+
         hexagon.addEventListener('click', () => {
           if (!gameOver && !cell.opened && !cell.flagged) {
             openCell(row, col);

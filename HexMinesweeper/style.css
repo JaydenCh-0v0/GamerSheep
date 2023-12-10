@@ -1,15 +1,27 @@
+body {
+  background: url(Gura.png);
+  background-color: #fff;
+  min-height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
+}
+
 /* Html Container */
 .container {
   display: flex;
   align-items: center;
   justify-content: center;
+  min-height: 100vh;
 }
 .vertical-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin: 0;
-  position: absolute;
-  top: 50%;
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
+  width: 1000px;
+  min-height: 100vh;
+  background-color: rgba(100, 100, 100, 0.5);
 }
 
 /* Game board container */
@@ -58,7 +70,7 @@
 
 /* Opened cells */
 .opened {
-  background-color: #6C6;
+  background-color: rgb(120, 238, 120);
 }
 
 /* Opened cells */
