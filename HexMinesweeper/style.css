@@ -14,14 +14,59 @@ body {
   justify-content: center;
   min-height: 100vh;
 }
+/* Center window */
 .vertical-center {
   display: flex;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   margin: 0;
   width: 1000px;
   min-height: 100vh;
   background-color: rgba(100, 100, 100, 0.5);
+}
+/* Left/right side window */
+.vertical-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 450px;
+  min-height: 100vh;
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+/* Info box container */
+.info-box {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 400px;;
+  background-color: #333;
+  color: #fff;
+}
+/* Mine count element */
+#mine-count,
+#flag-count,
+#restart-button {
+  font-weight: bold;
+  margin: 5px;
+}
+
+/* Restart button element */
+#restart-button {
+  background-color: #fff;
+  color: #333;
+  min-width: 200px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#restart-button:hover {
+  background-color: #ddd;
 }
 
 /* Game board container */
