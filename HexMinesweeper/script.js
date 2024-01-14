@@ -2,7 +2,7 @@ const gameBoard = document.getElementById('game-board');
 
 const numRows = 16;
 const numCols = 16;
-const numMines = 40;
+const numMines = 45;
 
 let grid = [];
 let flags = 0;
