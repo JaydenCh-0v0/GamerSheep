@@ -8,22 +8,85 @@
 </head>
 <body>
     <div class="container">
-        <div class="vertical-side">
-            <div class="info-box">
-                <div> Player A </div>
+        <div class="vertical-side" id="info-board">
+
+            <div class="game-title"> </div>
+
+            <div class="info-box-outter-margin p1" id="id-p1">
+                <div class="info-box">
+                    <div class="inner-table">
+                        <div class="player-name text-p1"> Player A </div>
+                        <div id="hp-count-p1" class="player-heart"> 
+                            ❤ ❤ ❤ ❤ 
+                            <span id="hp-loss-p1" class="player-heart-loss">❤</span> 
+                        </div>
+                        <div id="score-count-p1"> Score: 0 </div>
+                        <div id="flag-count-p1">  Flags: 0 </div>
+                        <div id="oxygen-count-p1"> Oxygen: 100 % </div>
+                    </div>
+                </div>
             </div>
-            <div class="info-box">
-                <div id="mine-count"> - Mines: 40</div>
-                <div id="flag-count"> - Flags: 0</div>
-                <div id="restart-button" onclick="restartGame()"> Restart </div>
+
+            <div class="info-box-outter-margin p2" id="id-p2">
+                <div class="info-box">
+                    <div class="inner-table">
+                        <div class="player-name text-p2"> Player B </div>
+                        <div id="hp-count-p2" class="player-heart"> 
+                            ❤ ❤ ❤ ❤ 
+                            <span id="hp-loss-p2" class="player-heart-loss">❤</span> 
+                        </div>
+                        <div id="score-count-p2"> Score: 0 </div>
+                        <div id="flag-count-p2">  Flags: 0 </div>
+                        <div id="oxygen-count-p2"> Oxygen: 100 % </div>
+                    </div>
+                </div>
             </div>
+            
+            <div class="info-box-outter-margin p3" id="id-p3">
+                <div class="info-box">
+                    <div class="inner-table">
+                        <div class="player-name text-p3"> Player C </div>
+                        <div id="hp-count-p3" class="player-heart"> 
+                            ❤ ❤ ❤ ❤  
+                            <span id="hp-loss-p3" class="player-heart-loss">❤</span> 
+                        </div>
+                        <div id="score-count-p3"> Score: 0 </div>
+                        <div id="flag-count-p3">  Flags: 0 </div>
+                        <div id="oxygen-count-p3"> Oxygen: 100 % </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box-outter-margin p4" id="id-p4">
+                <div class="info-box">
+                    <div class="inner-table">
+                        <div class="player-name text-p4"> Player D </div>
+                        <div id="hp-count-p4" class="player-heart"> 
+                            ❤ ❤ ❤ ❤ 
+                            <span id="hp-loss-p4" class="player-heart-loss"></span> 
+                        </div>
+                        <div id="score-count-p4"> Score: 0 </div>
+                        <div id="flag-count-p4">  Flags: 0 </div>
+                        <div id="oxygen-count-p4"> Oxygen: 100 % </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <div class="inner-table">
+                    <div> Game Info Board: </div>
+                    <div class="game-info" id="round"> Round: 1 </div>
+                    <div class="game-info" id="mine-count"> Mines: 40</div>
+                    <div class="game-info" id="flag-count"> Flags: 0</div>
+                </div>
+            </div>
+            <div id="restart-button" onclick="restartGame()"> Restart </div>
         </div>
+
         <div class="vertical-center">
             <div id="game-board"></div>
         </div>
-        <div class="vertical-side">
 
-        </div>
     </div>
     <script src="script.js"></script>
 </body>
