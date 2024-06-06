@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_yq7yc"]
 [ext_resource type="Texture2D" uid="uid://b71bhsxwmtuv4" path="res://sprites/char/Gura.png" id="2_bvl66"]
 [ext_resource type="Texture2D" uid="uid://mjhkip07m3gd" path="res://sprites/tool/Basic_tools_and_meterials.png" id="3_picag"]
-[ext_resource type="Texture2D" uid="uid://cujkbj42gapqu" path="res://sprites/item_effect/atK200/A200a.png" id="4_yese3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2pflc"]
 radius = 4.8
@@ -483,6 +482,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qeon"]
+size = Vector2(3.5, 19)
+
+[sub_resource type="Animation" id="Animation_b5amx"]
+length = 1.25
+
 [sub_resource type="Animation" id="Animation_xamk5"]
 resource_name = "axe"
 length = 1.15
@@ -494,7 +499,7 @@ tracks/0/path = NodePath("Tool:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.8, 1.15),
+"times": PackedFloat32Array(0, 0.15, 0.55, 1.15),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [-1.5708, 2.0944, 2.0944, -1.5708]
@@ -502,137 +507,26 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Tool/Axe:rotation")
+tracks/1/path = NodePath("Tool/Sword:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.05, 0.15, 0.8, 1.15),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 2,
-"values": [0.872665, 2.18166, 2.35619, 2.35619, 0.872665]
+"update": 0,
+"values": [1.309, 2.18166, 2.35619, 2.35619, 1.309]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SlashSprite:frame_coords")
+tracks/2/path = NodePath(".:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.05, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(1, 0), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SlashSprite:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SlashSprite:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.05, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.95, 1.05),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [-0.523598, 0.785397, 2.09439]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SlashSprite:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.05, 0.1, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(7, -10), Vector2(12, 4), Vector2(-1, 13)]
-}
-
-[sub_resource type="Animation" id="Animation_b5amx"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Tool:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-1.5708]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Tool/Axe:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.785398]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("SlashSprite:frame_coords")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SlashSprite:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("SlashSprite:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-0.523598]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SlashSprite:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(7, -10)]
+"values": [Vector2(0, 8), Vector2(0, 9), Vector2(0, 9), Vector2(0, 8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t1r7i"]
@@ -644,6 +538,7 @@ _data = {
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(0, -3)
 collision_layer = 3
 script = ExtResource("1_yq7yc")
 
@@ -653,39 +548,53 @@ position = Vector2(0, 7)
 shape = SubResource("CircleShape2D_2pflc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 12)
-sprite_frames = SubResource("SpriteFrames_yj02p")
-animation = &"right_front_idle"
-offset = Vector2(0, -16)
-
-[node name="Item" type="Node2D" parent="."]
-
-[node name="Tool" type="Node2D" parent="Item"]
-rotation = -1.5708
-
-[node name="Axe" type="Sprite2D" parent="Item/Tool"]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(7, 4)
-rotation = 0.785398
+position = Vector2(0, 9)
+sprite_frames = SubResource("SpriteFrames_yj02p")
+animation = &"right_front_idle"
+offset = Vector2(0, -13)
+
+[node name="Item" type="Node2D" parent="."]
+position = Vector2(0, 8)
+
+[node name="Tool" type="Node2D" parent="Item"]
+position = Vector2(0, -5)
+rotation = -1.5708
+
+[node name="Sword" type="Sprite2D" parent="Item/Tool"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(3, 3)
+rotation = 1.309
 texture = ExtResource("3_picag")
-offset = Vector2(-3, -5)
+offset = Vector2(-5, -5)
 flip_h = true
-hframes = 3
+hframes = 8
 vframes = 2
-frame = 1
+frame = 4
+
+[node name="SwordCollision" type="CollisionShape2D" parent="Item/Tool/Sword"]
+position = Vector2(-6, -6)
+rotation = -0.785397
+shape = SubResource("RectangleShape2D_6qeon")
 
 [node name="ItemAnimationPlayer" type="AnimationPlayer" parent="Item"]
 libraries = {
 "": SubResource("AnimationLibrary_t1r7i")
 }
 
-[node name="SlashSprite" type="Sprite2D" parent="Item"]
+[node name="LHand" type="Sprite2D" parent="Item"]
 visible = false
 z_index = 1
 y_sort_enabled = true
-position = Vector2(7, -10)
-rotation = -0.523598
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_yese3")
-hframes = 4
+position = Vector2(4, -7)
+rotation = -0.785398
+texture = ExtResource("3_picag")
+offset = Vector2(-5, -5)
+flip_h = true
+hframes = 8
+vframes = 2
+frame = 3
+
+[node name="RHand" type="Sprite2D" parent="Item"]
