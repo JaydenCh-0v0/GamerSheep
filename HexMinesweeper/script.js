@@ -7,13 +7,14 @@ const numMines = 45;
 const numSurvivors = 0;
 
 let currentPlayer = 0;
-let numPlayer = 4;
-let numHP = 5;
+let numPlayer = 2;
+let gamemode;
+let numHP = 3;
 let playerInfo = [
-  {ID: 'p1', Name: 'Player A', HP: numHP, Score: 0, Oxygen: 100},
-  {ID: 'p2', Name: 'Player B', HP: numHP, Score: 0, Oxygen: 100},
-  {ID: 'p3', Name: 'Player C', HP: numHP, Score: 0, Oxygen: 100},
-  {ID: 'p4', Name: 'Player D', HP: numHP, Score: 0, Oxygen: 100},
+  {ID: 'p1', Name: 'Player A', HP: numHP, Score: 0, Oxygen: 100, Territories: 0},
+  {ID: 'p2', Name: 'Player B', HP: numHP, Score: 0, Oxygen: 100, Territories: 0},
+  {ID: 'p3', Name: 'Player C', HP: numHP, Score: 0, Oxygen: 100, Territories: 0},
+  {ID: 'p4', Name: 'Player D', HP: numHP, Score: 0, Oxygen: 100, Territories: 0},
 ]
 
 let round = 1;
@@ -135,6 +136,7 @@ function renderPlayerCard() {
   playerInfo.forEach(pinfo => {
     document.getElementById(`hp-count-${pinfo.ID}`).textContent = _textHeart(pinfo.HP);
     document.getElementById(`score-count-${pinfo.ID}`).textContent  = `Score: ${pinfo.Score}`;
+    document.getElementById(`territories-count-${pinfo.ID}`).textContent  = `Territories: ${pinfo.Territories}`;
     document.getElementById(`oxygen-count-${pinfo.ID}`).textContent = `Oxygen: ${pinfo.Oxygen} %`;
     document.getElementById(`id-${pinfo.ID}`).classList.remove('focus');
   });
@@ -207,10 +209,8 @@ function renderGrid() {
 function nextPlayer() {
   do{
     currentPlayer++;
-    if (currentPlayer === numPlayer) {
-      currentPlayer = 0;
-      round++;
-    }
+    if (currentPlayer === numPlayer) currentPlayer = 0;
+    if (currentPlayer === 1) round++;
   } while (playerInfo[currentPlayer].HP === 0 && !gameOver)
   
   renderPlayerCard();
@@ -221,6 +221,7 @@ function initializeInfoBox() {
   mineCountElement = document.getElementById('mine-count');
   flagCountElement = document.getElementById('flag-count');
   restartButtonElement = document.getElementById('restart-button');
+  gamemode = "multiplayer"
   switch(numPlayer){
     case 1:
       document.getElementById('id-p2').hidden = true;
@@ -228,7 +229,8 @@ function initializeInfoBox() {
       document.getElementById("id-p3").hidden = true;
     case 3:
       document.getElementById("id-p4").hidden = true;
-    default:
+    default: 
+      gamemode = "singleplayer"
       break;
   }
 }
@@ -257,17 +259,18 @@ function openCell(row, col) {
   if (cell.mine) {
     cell.opened = true;
     cell.owner = playerInfo[currentPlayer].ID;
+    playerInfo[currentPlayer].Territories++;
     playerInfo[currentPlayer].HP--;
     if(_isAllPlayerDie()) {
       gameOver = true;
       revealMines();
       alert(`Game Over.`);
-    }else{
-      renderGrid();
+      return;
     }
   } else if (!cell.opened) {
     cell.opened = true;
     cell.owner = playerInfo[currentPlayer].ID;
+    playerInfo[currentPlayer].Territories++;
     openCells++;
     if (cell.number === 0) {
       const neighbors = getNeighbors(row, col);
@@ -282,8 +285,8 @@ function openCell(row, col) {
       gameOver = true;
       alert('You Win!');
     }
-    renderGrid();
   }
+  renderGrid();
 }
 
 function _isAllPlayerDie(){
