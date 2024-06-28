@@ -7,7 +7,7 @@ const numMines = 45;
 const numSurvivors = 0;
 
 let currentPlayer = 0;
-let numPlayer = 2;
+let numPlayer = 3;
 let gamemode;
 let numHP = 3;
 let playerInfo = [

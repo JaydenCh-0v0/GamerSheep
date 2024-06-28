@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://wwqtjylt53k5" path="res://sprites/Wood_Bridge.png" id="10_goouu"]
 [ext_resource type="Script" path="res://scripts/Camera2D.gd" id="11_lgqeq"]
 [ext_resource type="Texture2D" uid="uid://c1cbudmx128mh" path="res://sprites/Chest.png" id="12_524o5"]
-[ext_resource type="PackedScene" uid="uid://bp5skewl7xc2c" path="res://scene/player.tscn" id="14_3o11t"]
+[ext_resource type="PackedScene" uid="uid://b48k6fue8but5" path="res://scene/new_player.tscn" id="14_momrx"]
 [ext_resource type="PackedScene" uid="uid://pvtvo5thw2ho" path="res://scene/enemy.tscn" id="15_8fmr7"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_xit3h"]
@@ -3003,8 +3003,7 @@ position_smoothing_enabled = true
 rotation_smoothing_enabled = true
 script = ExtResource("11_lgqeq")
 
-[node name="player" parent="." instance=ExtResource("14_3o11t")]
-position = Vector2(11, 4)
+[node name="new_player" parent="Camera2D" instance=ExtResource("14_momrx")]
 
 [node name="enemy" parent="." instance=ExtResource("15_8fmr7")]
 position = Vector2(184, 70)

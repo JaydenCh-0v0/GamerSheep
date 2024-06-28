@@ -16,7 +16,7 @@ func _ready():
 func _process(delta):
 	var mouse_dir : Vector2 = (get_global_mouse_position() - global_position).normalized()
 
-	item.rotation = mouse_dir.angle()
+	item.rotation = mouse_dir.angle() 
 
 	if (item.scale.y == 1 and mouse_dir.x < 0):
 		item.scale.y = -1
