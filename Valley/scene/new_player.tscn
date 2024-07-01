@@ -280,17 +280,26 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4yxca"]
-radius = 7.07107
+radius = 4.0
 
 [node name="new_player" type="CharacterBody2D"]
+position = Vector2(0, -4)
+collision_layer = 3
 script = ExtResource("1_lf4jm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, 5)
 sprite_frames = SubResource("SpriteFrames_bsvla")
-animation = &"side_idle"
+animation = &"front_idle"
+offset = Vector2(0, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_4yxca")
 
 [node name="bow" type="Node2D" parent="."]
+position = Vector2(13, 0)
