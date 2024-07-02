@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b48k6fue8but5"]
+[gd_scene load_steps=40 format=3 uid="uid://b48k6fue8but5"]
 
 [ext_resource type="Script" path="res://new_player.gd" id="1_lf4jm"]
 [ext_resource type="Texture2D" uid="uid://dfldr0hib18f4" path="res://sprites/SimpleCharacter/Girl-Sheet.png" id="1_oma3r"]
@@ -282,6 +282,8 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4yxca"]
 radius = 4.0
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_mpfil"]
+
 [node name="new_player" type="CharacterBody2D"]
 position = Vector2(0, -4)
 collision_layer = 3
@@ -298,8 +300,13 @@ offset = Vector2(0, -13)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_4yxca")
 
 [node name="bow" type="Node2D" parent="."]
 position = Vector2(13, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="bow"]
+sprite_frames = SubResource("SpriteFrames_mpfil")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(2, 0)
