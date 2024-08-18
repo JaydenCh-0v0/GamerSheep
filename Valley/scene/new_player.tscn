@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://b48k6fue8but5"]
+[gd_scene load_steps=50 format=3 uid="uid://b48k6fue8but5"]
 
 [ext_resource type="Script" path="res://new_player.gd" id="1_lf4jm"]
 [ext_resource type="Texture2D" uid="uid://dfldr0hib18f4" path="res://sprites/SimpleCharacter/Girl-Sheet.png" id="1_oma3r"]
+[ext_resource type="Texture2D" uid="uid://cj04je7lt4jmj" path="res://sprites/SimpleCharacter/Bow.png" id="3_dlfw2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8c2br"]
 atlas = ExtResource("1_oma3r")
@@ -282,7 +283,83 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_4yxca"]
 radius = 4.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji4qd"]
+atlas = ExtResource("3_dlfw2")
+region = Rect2(0, 24, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_atoes"]
+atlas = ExtResource("3_dlfw2")
+region = Rect2(48, 24, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0oef"]
+atlas = ExtResource("3_dlfw2")
+region = Rect2(96, 24, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc4l1"]
+atlas = ExtResource("3_dlfw2")
+region = Rect2(144, 24, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adghb"]
+atlas = ExtResource("3_dlfw2")
+region = Rect2(0, 24, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6stqe"]
+atlas = ExtResource("3_dlfw2")
+region = Rect2(144, 24, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hi7e2"]
+atlas = ExtResource("3_dlfw2")
+region = Rect2(192, 24, 48, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lh3l"]
+atlas = ExtResource("3_dlfw2")
+region = Rect2(240, 24, 48, 24)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_mpfil"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji4qd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_atoes")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_f0oef")
+}, {
+"duration": 999.0,
+"texture": SubResource("AtlasTexture_nc4l1")
+}],
+"loop": true,
+"name": &"draw_bowstring",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adghb")
+}],
+"loop": true,
+"name": &"idel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_6stqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hi7e2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lh3l")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qu6an"]
+radius = 4.0
+height = 18.0
 
 [node name="new_player" type="CharacterBody2D"]
 position = Vector2(0, -4)
@@ -302,11 +379,22 @@ z_index = 1
 y_sort_enabled = true
 shape = SubResource("CircleShape2D_4yxca")
 
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -3)
+
 [node name="bow" type="Node2D" parent="."]
-position = Vector2(13, 0)
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="bow"]
+rotation = 4.71239
 sprite_frames = SubResource("SpriteFrames_mpfil")
+animation = &"draw_bowstring"
+offset = Vector2(0, 3)
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(2, 0)
+[node name="player_hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
+position = Vector2(0, -5)
+shape = SubResource("CapsuleShape2D_qu6an")

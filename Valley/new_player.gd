@@ -22,8 +22,11 @@ var is_bow_cooldowning : bool = false
 var arrow = preload("res://scene/arrow.tscn")
 
 # function
+
 func _physics_process(delta):
 	handle_char_act(delta)
+
+
 
 func calculate_dir(dir : DIR, norm_xy : Vector2, limit : float = .75):
 	if abs(norm_xy.x) > limit: #is in limit
@@ -82,25 +85,42 @@ func update_dir():
 
 # --- --- --- the following area is PLAYER ACTION FUNCTIONs --- --- --- #
 
-
+enum BOW_STATE { IDLE, DRAW, SHOOT }
+var bow_state : BOW_STATE = BOW_STATE.IDLE
 
 func  handle_bow_animation():
-	pass
+	var bow_ani : AnimatedSprite2D = $bow/AnimatedSprite2D
+	$bow.show_behind_parent = (face_dir == DIR.BACK)
+	match(bow_state):
+		BOW_STATE.IDLE:
+			bow_ani.play("idel")
+		BOW_STATE.DRAW:
+			bow_ani.play("draw_bowstring")
+		BOW_STATE.SHOOT:
+			bow_ani.play("shoot")
 
 
 
 func handle_bow_action(delta):
-	if Input.is_action_just_pressed("click") \
+	$Marker2D.look_at(get_global_mouse_position())
+	$bow.rotation = $Marker2D.rotation
+	# print($bow/AnimatedSprite2D.get_frame_progress())
+	if Input.is_action_just_pressed("click"):
+		$bow/AnimatedSprite2D.set_frame(0)
+		bow_state = BOW_STATE.DRAW
+	elif Input.is_action_just_released("click") \
 		 and is_bow_equiped  \
+		 and $bow/AnimatedSprite2D.get_frame() == 3 \
 		 and not is_bow_cooldowning:
+		bow_state = BOW_STATE.SHOOT
 		is_bow_cooldowning = true
-		$Marker2D.look_at(get_global_mouse_position())
 		var arrow_instance = arrow.instantiate()
 		arrow_instance.rotation = $Marker2D.rotation
 		arrow_instance.global_position = $Marker2D.global_position
 		add_child(arrow_instance)
 		await get_tree().create_timer(0.4).timeout
 		is_bow_cooldowning = false
+		bow_state = BOW_STATE.IDLE
 	pass
 
 
@@ -120,6 +140,8 @@ func handle_movement_action(delta):
 		velocity = velocity.limit_length(speed) 
 		char_act = ACT.MOVE
 	move_and_slide()
+
+
 
 func handle_movement_animation():
 	var ani: AnimatedSprite2D = $AnimatedSprite2D
@@ -141,3 +163,5 @@ func handle_movement_animation():
 				_:			ani.play("side_walk")
 		ACT.DEAD:
 				ani.play("death")
+
+
