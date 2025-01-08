@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://3agc7nic1l2t"]
+
+[ext_resource type="Script" path="res://Scripts/platform.gd" id="1_afy3g"]
+
+[node name="platform" type="StaticBody2D" groups=["dropable_platform"]]
+collision_layer = 2
+script = ExtResource("1_afy3g")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-4, -8, 12, -8, 4, 8, -12, 8)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-3, -7, 10, -7, 3, 7, -10, 7)

@@ -1,0 +1,163 @@
+[gd_scene load_steps=18 format=4 uid="uid://c12a86lcvpj0p"]
+
+[ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_3whug"]
+[ext_resource type="Texture2D" uid="uid://dbja46ggythso" path="res://Sprites/ForestBackground.png" id="1_x0p1m"]
+[ext_resource type="PackedScene" uid="uid://c4ysfw3dfabx2" path="res://Scenes/Player.tscn" id="2_0gtd2"]
+[ext_resource type="Texture2D" uid="uid://ds36o8ebo13fv" path="res://Sprites/wall.png" id="2_8rh3c"]
+[ext_resource type="PackedScene" uid="uid://hacnu11rnp3e" path="res://Scenes/Bird.tscn" id="3_c2buy"]
+[ext_resource type="Texture2D" uid="uid://dentwowp56mpn" path="res://Sprites/Sprite-0002.png" id="3_emeg1"]
+[ext_resource type="Texture2D" uid="uid://ch1jwmrnu36dd" path="res://Sprites/Sprite-0001.png" id="4_mjg6a"]
+[ext_resource type="PackedScene" uid="uid://jaufnuae5n3q" path="res://Scenes/Slime.tscn" id="6_jgfyj"]
+[ext_resource type="Texture2D" uid="uid://bjce58jsdtqdh" path="res://Sprites/ForestBranch.png" id="8_n4bnq"]
+[ext_resource type="Texture2D" uid="uid://dy36u5aihaogt" path="res://Sprites/ForestLeaves.png" id="9_c02pl"]
+[ext_resource type="PackedScene" uid="uid://3agc7nic1l2t" path="res://Scenes/platform.tscn" id="11_t7n8k"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pf15"]
+texture = ExtResource("2_8rh3c")
+0:0/next_alternative_id = 3
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_h = true
+0:0/2 = 2
+
+[sub_resource type="TileSet" id="TileSet_iwhqf"]
+sources/0 = SubResource("TileSetAtlasSource_6pf15")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_inxyq"]
+texture = ExtResource("4_mjg6a")
+texture_region_size = Vector2i(32, 16)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwi4e"]
+texture = ExtResource("3_emeg1")
+texture_region_size = Vector2i(32, 16)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_1cm21"]
+tile_shape = 2
+sources/0 = SubResource("TileSetAtlasSource_inxyq")
+sources/1 = SubResource("TileSetAtlasSource_nwi4e")
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_plbr1"]
+normal = Vector2(0, 1)
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_timer")]
+y_sort_enabled = true
+script = ExtResource("1_3whug")
+slime_scene = ExtResource("6_jgfyj")
+spawn_timer = NodePath("GM_Timer")
+metadata/_edit_lock_ = true
+
+[node name="GM_Timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="ForestBG_Left" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(-120, -4)
+texture = ExtResource("1_x0p1m")
+metadata/_edit_lock_ = true
+
+[node name="ForestBG_Right" type="Sprite2D" parent="."]
+z_index = -2
+position = Vector2(120, -4)
+texture = ExtResource("1_x0p1m")
+metadata/_edit_lock_ = true
+
+[node name="TileMap_BG" type="TileMapLayer" parent="."]
+position = Vector2(12, 0)
+tile_map_data = PackedByteArray("AAD6/wIAAAAAAAAAAAD5/wIAAAAAAAAAAAD4/wIAAAAAAAAAAAD3/wIAAAAAAAAAAAD2/wIAAAAAAAAAAAD1/wIAAAAAAAAAAAD0/wIAAAAAAAAAAADz/wIAAAAAAAAAAADy/wIAAAAAAAAAAADx/wIAAAAAAAAAAADw/wIAAAAAAAAAAADv/wIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_iwhqf")
+metadata/_edit_lock_ = true
+
+[node name="TileMap_Ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AADy/wcAAQAAAAAAAADz/wcAAAAAAAAAAAD1/wcAAQAAAAAAAAD2/wcAAQAAAAAAAADz/wYAAQAAAAAAAAD2/wYAAQAAAAAAAAD3/wYAAQAAAAAAAADz/wUAAQAAAAAAAAD0/wUAAAAAAAAAAAD2/wUAAQAAAAAAAAD3/wUAAQAAAAAAAAD0/wQAAQAAAAAAAAD3/wQAAQAAAAAAAAD4/wQAAQAAAAAAAAD0/wMAAQAAAAAAAAD1/wMAAAAAAAAAAAD3/wMAAQAAAAAAAAD4/wMAAQAAAAAAAAD1/wQAAAAAAAAAAAD0/wYAAAAAAAAAAADx/wcAAQAAAAAAAADy/wYAAQAAAAAAAADy/wUAAQAAAAAAAADz/wQAAQAAAAAAAADz/wMAAQAAAAAAAAD5/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAD5/wQAAQAAAAAAAAD6/wQAAQAAAAAAAAD7/wQAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAD4/wUAAQAAAAAAAAD5/wUAAQAAAAAAAAD6/wUAAQAAAAAAAAD7/wUAAQAAAAAAAAD+/wUAAQAAAAAAAAD//wUAAQAAAAAAAAAAAAUAAQAAAAAAAAABAAUAAQAAAAAAAAACAAUAAQAAAAAAAAADAAUAAQAAAAAAAAAEAAUAAQAAAAAAAAAFAAUAAQAAAAAAAAAGAAUAAQAAAAAAAAAHAAUAAQAAAAAAAAD4/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD//wYAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAD3/wcAAQAAAAAAAAD4/wcAAQAAAAAAAAD5/wcAAQAAAAAAAAD6/wcAAQAAAAAAAAD7/wcAAQAAAAAAAAD8/wcAAQAAAAAAAAD9/wcAAQAAAAAAAAD+/wcAAQAAAAAAAAD//wcAAQAAAAAAAAAAAAcAAQAAAAAAAAABAAcAAQAAAAAAAAACAAcAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAAMAAQAAAAAAAAAIAAMAAQAAAAAAAAAJAAMAAQAAAAAAAAAKAAMAAQAAAAAAAAALAAMAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAJAAUAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAUAAQAAAAAAAAAMAAUAAAAAAAAAAAAIAAYAAQAAAAAAAAAJAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAQAAAAAAAAAOAAYAAQAAAAAAAAAHAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAcAAQAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAQAAAAAAAAANAAcAAQAAAAAAAAAOAAcAAQAAAAAAAAANAAUAAQAAAAAAAAAOAAUAAQAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAQAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAQAAAAAAAAAPAAQAAQAAAAAAAAAPAAMAAQAAAAAAAAAPAAYAAQAAAAAAAAAPAAUAAQAAAAAAAAAQAAQAAQAAAAAAAAAQAAMAAQAAAAAAAADy/wMAAQAAAAAAAADx/wMAAAAAAAAAAADw/wMAAQAAAAAAAADw/wQAAQAAAAAAAADx/wQAAAAAAAAAAADy/wQAAQAAAAAAAADw/wUAAAAAAAAAAADv/wUAAQAAAAAAAADx/wUAAQAAAAAAAADx/wYAAQAAAAAAAADw/wYAAAAAAAAAAADv/wYAAQAAAAAAAADw/wcAAQAAAAAAAADv/wcAAAAAAAAAAADu/wcAAQAAAAAAAAD2/wMAAAAAAAAAAAD2/wQAAAAAAAAAAAD1/wUAAAAAAAAAAAD1/wYAAAAAAAAAAAD8/wUAAQAAAAAAAAD8/wQAAQAAAAAAAAD9/wQAAQAAAAAAAAD8/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wQAAQAAAAAAAAD+/wQAAQAAAAAAAAD9/wUAAQAAAAAAAAD0/wcAAAAAAAAAAAAPAAcAAQAAAAAAAAAQAAYAAQAAAAAAAAAQAAUAAQAAAAAAAAARAAQAAQAAAAAAAAARAAMAAQAAAAAAAADv/wMAAQAAAAAAAADv/wQAAQAAAAAAAADu/wUAAQAAAAAAAADu/wYAAQAAAAAAAADt/wcAAQAAAAAAAAA=")
+tile_set = SubResource("TileSet_1cm21")
+metadata/_edit_lock_ = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="BoundaryUp" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 32)
+shape = SubResource("WorldBoundaryShape2D_plbr1")
+metadata/_edit_lock_ = true
+
+[node name="BoundaryLow" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 128)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_plbr1")
+metadata/_edit_lock_ = true
+
+[node name="BoundaryLeft" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-230, 88)
+rotation = 4.71239
+scale = Vector2(0.5, 0.5)
+shape = SubResource("WorldBoundaryShape2D_plbr1")
+metadata/_edit_lock_ = true
+
+[node name="BoundaryRight" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(230, 88)
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+shape = SubResource("WorldBoundaryShape2D_plbr1")
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("2_0gtd2")]
+position = Vector2(-122, 75)
+
+[node name="Bird" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-112, -66)
+
+[node name="Bird1" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-144, 56)
+is_setup = true
+metadata/_edit_lock_ = true
+
+[node name="Bird2" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-152, 72)
+is_setup = true
+metadata/_edit_lock_ = true
+
+[node name="Bird3" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-160, 88)
+is_setup = true
+metadata/_edit_lock_ = true
+
+[node name="Bird4" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-168, 104)
+is_setup = true
+metadata/_edit_lock_ = true
+
+[node name="Bird5" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-176, 120)
+is_setup = true
+metadata/_edit_lock_ = true
+
+[node name="Slime" parent="." instance=ExtResource("6_jgfyj")]
+position = Vector2(224, 56)
+
+[node name="ForestBranch" type="Sprite2D" parent="."]
+position = Vector2(-150, -58)
+texture = ExtResource("8_n4bnq")
+
+[node name="ForestLeaves" type="Sprite2D" parent="."]
+position = Vector2(18, 42)
+texture = ExtResource("9_c02pl")
+
+[node name="platform" parent="." instance=ExtResource("11_t7n8k")]
+z_index = -1
+position = Vector2(-160, 56)
+
+[node name="platform2" parent="." instance=ExtResource("11_t7n8k")]
+z_index = -1
+position = Vector2(-144, 56)
+
+[node name="Bird6" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-128, -66)
+
+[connection signal="timeout" from="GM_Timer" to="." method="_spawn_enemy"]
