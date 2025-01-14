@@ -19,6 +19,7 @@ func _physics_process(delta: float) -> void:
 func hurt(demage: int):
 	HP -= demage
 	if HP <= 0: die()
+	else: play_hurt()
 
 func die():
 	slime_animation_sprite.play("die")
@@ -30,3 +31,9 @@ func die():
 func _on_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D and HP>0:
 		body.gameover()
+
+func play_hurt() -> void:
+	var temp = modulate
+	modulate = Color.PALE_VIOLET_RED
+	await get_tree().create_timer(0.1).timeout
+	modulate = temp

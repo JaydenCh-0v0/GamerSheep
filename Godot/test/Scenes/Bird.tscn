@@ -6,9 +6,6 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_66d64"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_pfbe4"]
-radius = 3.0
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_8t5n2"]
 atlas = ExtResource("1_ng74w")
 region = Rect2(0, 224, 32, 32)
@@ -524,7 +521,11 @@ animations = [{
 "speed": 9.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_kaxu1"]
+radius = 0.5
+
 [node name="Bird" type="Area2D" node_paths=PackedStringArray("bird_animation", "action_timer") groups=["friend"]]
+collision_layer = 3
 script = ExtResource("1_0rvde")
 bird_animation = NodePath("AnimatedSprite2D")
 bullet_scene = ExtResource("2_wtamq")
@@ -535,9 +536,6 @@ position = Vector2(0, -8)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_66d64")
 metadata/_edit_lock_ = true
-
-[node name="DropCollision2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_pfbe4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_3lgtn")
@@ -550,9 +548,19 @@ metadata/_edit_lock_ = true
 wait_time = 3.0
 autostart = true
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[node name="DropArea" type="Area2D" parent="."]
+position = Vector2(0, -2)
+collision_layer = 3
+collision_mask = 3
+
+[node name="DropCollision2D" type="CollisionShape2D" parent="DropArea"]
+rotation = 1.5708
+shape = SubResource("CircleShape2D_kaxu1")
+debug_color = Color(1, 0, 0, 0.0980392)
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_bird_animation_finished"]
 [connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
+[connection signal="body_entered" from="DropArea" to="." method="_on_drop_area_body_entered"]
+[connection signal="body_exited" from="DropArea" to="." method="_on_drop_area_body_exited"]

@@ -2,7 +2,7 @@ extends Node2D
 
 @export var slime_scene: PackedScene
 @export var spawn_timer: Timer
-@export var is_spawn: bool = true
+@export var is_spawn_enemy: bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,7 +16,11 @@ func _process(delta: float) -> void:
 
 
 func _spawn_enemy() -> void:
-	if (is_spawn):
+	if (is_spawn_enemy):
 		var slime_node = slime_scene.instantiate()
+		slime_node.HP = slime_node.HP * randf_range(0.8, 1.5)
 		slime_node.position = Vector2(260, randf_range(56, 120))
 		get_tree().current_scene.add_child(slime_node)
+
+func _spawn_bird(pos: Vector2) -> void:
+	pass

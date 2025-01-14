@@ -126,7 +126,7 @@ animations = [{
 
 [node name="Slime" type="Area2D" node_paths=PackedStringArray("slime_animation_sprite") groups=["enemy"]]
 script = ExtResource("1_4wqdp")
-movement_speed = 10.0
+movement_speed = 30.0
 slime_animation_sprite = NodePath("AnimatedSprite2D")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

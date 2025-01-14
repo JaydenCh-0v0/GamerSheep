@@ -31,6 +31,7 @@ texture_region_size = Vector2i(32, 16)
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nwi4e"]
 texture = ExtResource("3_emeg1")
 texture_region_size = Vector2i(32, 16)
+0:0/next_alternative_id = 3
 0:0/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_1cm21"]
@@ -71,12 +72,248 @@ tile_set = SubResource("TileSet_iwhqf")
 metadata/_edit_lock_ = true
 
 [node name="TileMap_Ground" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AADy/wcAAQAAAAAAAADz/wcAAAAAAAAAAAD1/wcAAQAAAAAAAAD2/wcAAQAAAAAAAADz/wYAAQAAAAAAAAD2/wYAAQAAAAAAAAD3/wYAAQAAAAAAAADz/wUAAQAAAAAAAAD0/wUAAAAAAAAAAAD2/wUAAQAAAAAAAAD3/wUAAQAAAAAAAAD0/wQAAQAAAAAAAAD3/wQAAQAAAAAAAAD4/wQAAQAAAAAAAAD0/wMAAQAAAAAAAAD1/wMAAAAAAAAAAAD3/wMAAQAAAAAAAAD4/wMAAQAAAAAAAAD1/wQAAAAAAAAAAAD0/wYAAAAAAAAAAADx/wcAAQAAAAAAAADy/wYAAQAAAAAAAADy/wUAAQAAAAAAAADz/wQAAQAAAAAAAADz/wMAAQAAAAAAAAD5/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAD5/wQAAQAAAAAAAAD6/wQAAQAAAAAAAAD7/wQAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAD4/wUAAQAAAAAAAAD5/wUAAQAAAAAAAAD6/wUAAQAAAAAAAAD7/wUAAQAAAAAAAAD+/wUAAQAAAAAAAAD//wUAAQAAAAAAAAAAAAUAAQAAAAAAAAABAAUAAQAAAAAAAAACAAUAAQAAAAAAAAADAAUAAQAAAAAAAAAEAAUAAQAAAAAAAAAFAAUAAQAAAAAAAAAGAAUAAQAAAAAAAAAHAAUAAQAAAAAAAAD4/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD//wYAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAD3/wcAAQAAAAAAAAD4/wcAAQAAAAAAAAD5/wcAAQAAAAAAAAD6/wcAAQAAAAAAAAD7/wcAAQAAAAAAAAD8/wcAAQAAAAAAAAD9/wcAAQAAAAAAAAD+/wcAAQAAAAAAAAD//wcAAQAAAAAAAAAAAAcAAQAAAAAAAAABAAcAAQAAAAAAAAACAAcAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAAMAAQAAAAAAAAAIAAMAAQAAAAAAAAAJAAMAAQAAAAAAAAAKAAMAAQAAAAAAAAALAAMAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAJAAUAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAUAAQAAAAAAAAAMAAUAAAAAAAAAAAAIAAYAAQAAAAAAAAAJAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAQAAAAAAAAAOAAYAAQAAAAAAAAAHAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAcAAQAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAQAAAAAAAAANAAcAAQAAAAAAAAAOAAcAAQAAAAAAAAANAAUAAQAAAAAAAAAOAAUAAQAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAQAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAQAAAAAAAAAPAAQAAQAAAAAAAAAPAAMAAQAAAAAAAAAPAAYAAQAAAAAAAAAPAAUAAQAAAAAAAAAQAAQAAQAAAAAAAAAQAAMAAQAAAAAAAADy/wMAAQAAAAAAAADx/wMAAAAAAAAAAADw/wMAAQAAAAAAAADw/wQAAQAAAAAAAADx/wQAAAAAAAAAAADy/wQAAQAAAAAAAADw/wUAAAAAAAAAAADv/wUAAQAAAAAAAADx/wUAAQAAAAAAAADx/wYAAQAAAAAAAADw/wYAAAAAAAAAAADv/wYAAQAAAAAAAADw/wcAAQAAAAAAAADv/wcAAAAAAAAAAADu/wcAAQAAAAAAAAD2/wMAAAAAAAAAAAD2/wQAAAAAAAAAAAD1/wUAAAAAAAAAAAD1/wYAAAAAAAAAAAD8/wUAAQAAAAAAAAD8/wQAAQAAAAAAAAD9/wQAAQAAAAAAAAD8/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wQAAQAAAAAAAAD+/wQAAQAAAAAAAAD9/wUAAQAAAAAAAAD0/wcAAAAAAAAAAAAPAAcAAQAAAAAAAAAQAAYAAQAAAAAAAAAQAAUAAQAAAAAAAAARAAQAAQAAAAAAAAARAAMAAQAAAAAAAADv/wMAAQAAAAAAAADv/wQAAQAAAAAAAADu/wUAAQAAAAAAAADu/wYAAQAAAAAAAADt/wcAAQAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADy/wcAAQAAAAAAAADz/wcAAQAAAAAAAAD1/wcAAQAAAAAAAAD2/wcAAQAAAAAAAADz/wYAAQAAAAAAAAD2/wYAAQAAAAAAAAD3/wYAAQAAAAAAAADz/wUAAQAAAAAAAAD0/wUAAQAAAAAAAAD2/wUAAQAAAAAAAAD3/wUAAQAAAAAAAAD0/wQAAQAAAAAAAAD3/wQAAQAAAAAAAAD4/wQAAQAAAAAAAAD0/wMAAQAAAAAAAAD1/wMAAQAAAAAAAAD3/wMAAQAAAAAAAAD4/wMAAQAAAAAAAAD1/wQAAQAAAAAAAAD0/wYAAQAAAAAAAADx/wcAAQAAAAAAAADy/wYAAQAAAAAAAADy/wUAAQAAAAAAAADz/wQAAQAAAAAAAADz/wMAAQAAAAAAAAD5/wMAAQAAAAAAAAD6/wMAAQAAAAAAAAD7/wMAAQAAAAAAAAD//wMAAQAAAAAAAAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAD5/wQAAQAAAAAAAAD6/wQAAQAAAAAAAAD7/wQAAQAAAAAAAAAAAAQAAQAAAAAAAAABAAQAAQAAAAAAAAACAAQAAQAAAAAAAAD4/wUAAQAAAAAAAAD5/wUAAQAAAAAAAAD6/wUAAQAAAAAAAAD7/wUAAQAAAAAAAAD+/wUAAQAAAAAAAAD//wUAAQAAAAAAAAAAAAUAAQAAAAAAAAABAAUAAQAAAAAAAAACAAUAAQAAAAAAAAADAAUAAQAAAAAAAAAEAAUAAQAAAAAAAAAFAAUAAQAAAAAAAAAGAAUAAQAAAAAAAAAHAAUAAQAAAAAAAAD4/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD6/wYAAQAAAAAAAAD7/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD//wYAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAACAAYAAQAAAAAAAAADAAYAAQAAAAAAAAAEAAYAAQAAAAAAAAAFAAYAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAAYAAQAAAAAAAAD3/wcAAQAAAAAAAAD4/wcAAQAAAAAAAAD5/wcAAQAAAAAAAAD6/wcAAQAAAAAAAAD7/wcAAQAAAAAAAAD8/wcAAQAAAAAAAAD9/wcAAQAAAAAAAAD+/wcAAQAAAAAAAAD//wcAAQAAAAAAAAAAAAcAAQAAAAAAAAABAAcAAQAAAAAAAAACAAcAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAAMAAQAAAAAAAAAIAAMAAQAAAAAAAAAJAAMAAQAAAAAAAAAKAAMAAQAAAAAAAAALAAMAAQAAAAAAAAAMAAMAAQAAAAAAAAAMAAQAAQAAAAAAAAALAAQAAQAAAAAAAAAKAAQAAQAAAAAAAAAJAAQAAQAAAAAAAAAIAAQAAQAAAAAAAAAHAAQAAQAAAAAAAAAGAAQAAQAAAAAAAAAFAAQAAQAAAAAAAAAEAAQAAQAAAAAAAAADAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAJAAUAAQAAAAAAAAAKAAUAAQAAAAAAAAALAAUAAQAAAAAAAAAMAAUAAAAAAAAAAAAIAAYAAQAAAAAAAAAJAAYAAQAAAAAAAAAKAAYAAQAAAAAAAAALAAYAAQAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAQAAAAAAAAAOAAYAAQAAAAAAAAAHAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAJAAcAAQAAAAAAAAAKAAcAAQAAAAAAAAALAAcAAAAAAAAAAAAMAAcAAQAAAAAAAAANAAcAAQAAAAAAAAAOAAcAAQAAAAAAAAANAAUAAQAAAAAAAAAOAAUAAQAAAAAAAAANAAQAAAAAAAAAAAAOAAQAAQAAAAAAAAANAAMAAAAAAAAAAAAOAAMAAQAAAAAAAAAPAAQAAQAAAAAAAAAPAAMAAQAAAAAAAAAPAAYAAQAAAAAAAAAPAAUAAQAAAAAAAAAQAAQAAQAAAAAAAAAQAAMAAQAAAAAAAADy/wMAAQAAAAAAAADx/wMAAQAAAAAAAADw/wMAAQAAAAAAAADw/wQAAQAAAAAAAADx/wQAAQAAAAAAAADy/wQAAQAAAAAAAADw/wUAAQAAAAAAAADv/wUAAQAAAAAAAADx/wUAAQAAAAAAAADx/wYAAQAAAAAAAADw/wYAAQAAAAAAAADv/wYAAQAAAAAAAADw/wcAAQAAAAAAAADv/wcAAQAAAAAAAADu/wcAAQAAAAAAAAD2/wMAAQAAAAAAAAD2/wQAAQAAAAAAAAD1/wUAAQAAAAAAAAD1/wYAAQAAAAAAAAD8/wUAAQAAAAAAAAD8/wQAAQAAAAAAAAD9/wQAAQAAAAAAAAD8/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD+/wMAAQAAAAAAAAD//wQAAQAAAAAAAAD+/wQAAQAAAAAAAAD9/wUAAQAAAAAAAAD0/wcAAQAAAAAAAAAPAAcAAQAAAAAAAAAQAAYAAQAAAAAAAAAQAAUAAQAAAAAAAAARAAQAAQAAAAAAAAARAAMAAQAAAAAAAADv/wMAAQAAAAAAAADv/wQAAQAAAAAAAADu/wUAAQAAAAAAAADu/wYAAQAAAAAAAADt/wcAAQAAAAAAAAA=")
 tile_set = SubResource("TileSet_1cm21")
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
+[node name="platform1" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-128, 56)
+metadata/_edit_lock_ = true
+
+[node name="platform2" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-112, 56)
+metadata/_edit_lock_ = true
+
+[node name="platform3" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-136, 72)
+metadata/_edit_lock_ = true
+
+[node name="platform4" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-120, 72)
+metadata/_edit_lock_ = true
+
+[node name="platform5" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-144, 88)
+metadata/_edit_lock_ = true
+
+[node name="platform6" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-128, 88)
+metadata/_edit_lock_ = true
+
+[node name="platform7" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-152, 104)
+metadata/_edit_lock_ = true
+
+[node name="platform8" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-136, 104)
+metadata/_edit_lock_ = true
+
+[node name="platform9" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-160, 120)
+metadata/_edit_lock_ = true
+
+[node name="platform10" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-144, 120)
+metadata/_edit_lock_ = true
+
+[node name="platform11" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-96, 56)
+metadata/_edit_lock_ = true
+
+[node name="platform12" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-80, 56)
+metadata/_edit_lock_ = true
+
+[node name="platform13" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-104, 72)
+metadata/_edit_lock_ = true
+
+[node name="platform14" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-88, 72)
+metadata/_edit_lock_ = true
+
+[node name="platform15" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-112, 88)
+metadata/_edit_lock_ = true
+
+[node name="platform16" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-96, 88)
+metadata/_edit_lock_ = true
+
+[node name="platform17" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-120, 104)
+metadata/_edit_lock_ = true
+
+[node name="platform18" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-104, 104)
+metadata/_edit_lock_ = true
+
+[node name="platform19" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-128, 120)
+metadata/_edit_lock_ = true
+
+[node name="platform20" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-112, 120)
+metadata/_edit_lock_ = true
+
+[node name="platform21" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-192, 56)
+metadata/_edit_lock_ = true
+
+[node name="platform22" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-176, 56)
+metadata/_edit_lock_ = true
+
+[node name="platform23" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-200, 72)
+metadata/_edit_lock_ = true
+
+[node name="platform24" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-184, 72)
+metadata/_edit_lock_ = true
+
+[node name="platform25" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-208, 88)
+metadata/_edit_lock_ = true
+
+[node name="platform26" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-192, 88)
+metadata/_edit_lock_ = true
+
+[node name="platform27" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-216, 104)
+metadata/_edit_lock_ = true
+
+[node name="platform28" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-200, 104)
+metadata/_edit_lock_ = true
+
+[node name="platform29" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-224, 120)
+metadata/_edit_lock_ = true
+
+[node name="platform30" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-208, 120)
+metadata/_edit_lock_ = true
+
+[node name="platform31" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-160, 56)
+metadata/_edit_lock_ = true
+
+[node name="platform32" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-144, 56)
+metadata/_edit_lock_ = true
+
+[node name="platform33" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-168, 72)
+metadata/_edit_lock_ = true
+
+[node name="platform34" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-152, 72)
+metadata/_edit_lock_ = true
+
+[node name="platform35" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-176, 88)
+metadata/_edit_lock_ = true
+
+[node name="platform36" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-160, 88)
+metadata/_edit_lock_ = true
+
+[node name="platform37" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-184, 104)
+metadata/_edit_lock_ = true
+
+[node name="platform38" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-168, 104)
+metadata/_edit_lock_ = true
+
+[node name="platform39" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-192, 120)
+metadata/_edit_lock_ = true
+
+[node name="platform40" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
+visible = false
+z_index = -1
+position = Vector2(-176, 120)
 metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -107,57 +344,40 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("WorldBoundaryShape2D_plbr1")
 metadata/_edit_lock_ = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+metadata/_edit_lock_ = true
+
 [node name="Player" parent="." instance=ExtResource("2_0gtd2")]
-position = Vector2(-122, 75)
-
-[node name="Bird" parent="." instance=ExtResource("3_c2buy")]
-position = Vector2(-112, -66)
-
-[node name="Bird1" parent="." instance=ExtResource("3_c2buy")]
-position = Vector2(-144, 56)
-is_setup = true
-metadata/_edit_lock_ = true
-
-[node name="Bird2" parent="." instance=ExtResource("3_c2buy")]
-position = Vector2(-152, 72)
-is_setup = true
-metadata/_edit_lock_ = true
-
-[node name="Bird3" parent="." instance=ExtResource("3_c2buy")]
-position = Vector2(-160, 88)
-is_setup = true
-metadata/_edit_lock_ = true
-
-[node name="Bird4" parent="." instance=ExtResource("3_c2buy")]
-position = Vector2(-168, 104)
-is_setup = true
-metadata/_edit_lock_ = true
-
-[node name="Bird5" parent="." instance=ExtResource("3_c2buy")]
-position = Vector2(-176, 120)
-is_setup = true
-metadata/_edit_lock_ = true
+position = Vector2(-82, 74)
 
 [node name="Slime" parent="." instance=ExtResource("6_jgfyj")]
 position = Vector2(224, 56)
 
 [node name="ForestBranch" type="Sprite2D" parent="."]
+z_index = -1
 position = Vector2(-150, -58)
 texture = ExtResource("8_n4bnq")
 
 [node name="ForestLeaves" type="Sprite2D" parent="."]
+z_index = -1
+z_as_relative = false
 position = Vector2(18, 42)
 texture = ExtResource("9_c02pl")
 
-[node name="platform" parent="." instance=ExtResource("11_t7n8k")]
-z_index = -1
-position = Vector2(-160, 56)
+[node name="Bird" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-112, -66)
 
-[node name="platform2" parent="." instance=ExtResource("11_t7n8k")]
-z_index = -1
-position = Vector2(-144, 56)
+[node name="Bird1" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-124, -66)
 
-[node name="Bird6" parent="." instance=ExtResource("3_c2buy")]
-position = Vector2(-128, -66)
+[node name="Bird2" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-136, -66)
+
+[node name="Bird3" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-148, -66)
+
+[node name="Bird4" parent="." instance=ExtResource("3_c2buy")]
+position = Vector2(-160, -66)
 
 [connection signal="timeout" from="GM_Timer" to="." method="_spawn_enemy"]

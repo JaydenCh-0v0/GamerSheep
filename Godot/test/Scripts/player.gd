@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @export var player_speed: float = 100.0
 @export var player_animation_sprite: AnimatedSprite2D
-
 @export var bullet_scene: PackedScene
 
 var is_gameover: bool = false
@@ -44,4 +43,5 @@ func _on_fire() -> void:
 	
 	var bullet_node = bullet_scene.instantiate()
 	bullet_node.position = position + Vector2(6,0)
+	bullet_node.modulate = Color(Color.BROWN, 1)
 	get_tree().current_scene.add_child(bullet_node)

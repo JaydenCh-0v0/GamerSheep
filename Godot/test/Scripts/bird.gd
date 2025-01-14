@@ -6,6 +6,7 @@ extends Area2D
 @export var action_timer: Timer
 
 # Obj var
+const NAME: String = "sparrow"
 var HP: int = 100
 var group: String = "friend"
 
@@ -31,7 +32,7 @@ func _physics_process(delta: float) -> void:
 func _on_action_timer_timeout() -> void:
 	if (is_setup):
 		var num = randf_range(0, 1)
-		if(num > 0.8): 
+		if(num > 0.85): 
 			state_dig()
 		else:
 			state_attack()
@@ -67,8 +68,9 @@ func handle_drag(delta: float) -> void:
 		elif Input.is_action_just_released("click"):
 			Global.is_dragging = false
 			var tween = get_tree().create_tween()
-			if is_inside_dropable:
+			if is_inside_dropable and bodyRef.check_placeable():
 				tween.tween_property(self, "position", bodyRef.position, 0.2).set_ease(Tween.EASE_OUT)
+				bodyRef.set_placeable(false)
 			else:
 				tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
 				
@@ -78,19 +80,21 @@ func _on_mouse_entered() -> void:
 		scale = Vector2(1.15, 1.15)
 
 func _on_mouse_exited() -> void:
-	if not Global.is_dragging and not is_setup:
+	if not Global.is_dragging:
 		is_dragable = false
 		scale = Vector2(1, 1)
 
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("dropable_platform"):
+func _on_drop_area_body_entered(platform: Node2D) -> void:
+	if platform.is_in_group("dropable_platform"):
 		print("on_body_entered")
 		is_inside_dropable = true
-		body.modulate = Color(Color.REBECCA_PURPLE, 1)
-		bodyRef = body
+		is_setup = true
+		platform.is_hover = true
+		bodyRef = platform
 
-func _on_body_exited(body: Node2D) -> void:
-	if body.is_in_group("dropable_platform"):
+func _on_drop_area_body_exited(platform: Node2D) -> void:
+	if platform.is_in_group("dropable_platform"):
 		is_inside_dropable = false
-		body.modulate = Color(Color.MEDIUM_PURPLE, 0.7)
+		is_setup = false
+		platform.is_hover = false
 		
