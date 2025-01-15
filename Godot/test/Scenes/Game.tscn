@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=4 uid="uid://c12a86lcvpj0p"]
+[gd_scene load_steps=19 format=4 uid="uid://c12a86lcvpj0p"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_3whug"]
 [ext_resource type="Texture2D" uid="uid://dbja46ggythso" path="res://Sprites/ForestBackground.png" id="1_x0p1m"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://jaufnuae5n3q" path="res://Scenes/Slime.tscn" id="6_jgfyj"]
 [ext_resource type="Texture2D" uid="uid://bjce58jsdtqdh" path="res://Sprites/ForestBranch.png" id="8_n4bnq"]
 [ext_resource type="Texture2D" uid="uid://dy36u5aihaogt" path="res://Sprites/ForestLeaves.png" id="9_c02pl"]
-[ext_resource type="PackedScene" uid="uid://3agc7nic1l2t" path="res://Scenes/platform.tscn" id="11_t7n8k"]
+[ext_resource type="PackedScene" uid="uid://ligsm8mlh8ln" path="res://Scenes/Bird_spawn_point.tscn" id="10_t047a"]
+[ext_resource type="PackedScene" uid="uid://3agc7nic1l2t" path="res://Scenes/Bird_platform.tscn" id="11_t7n8k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pf15"]
 texture = ExtResource("2_8rh3c")
@@ -77,241 +78,201 @@ tile_set = SubResource("TileSet_1cm21")
 metadata/_edit_lock_ = true
 
 [node name="platform1" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-128, 56)
 metadata/_edit_lock_ = true
 
 [node name="platform2" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-112, 56)
 metadata/_edit_lock_ = true
 
 [node name="platform3" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-136, 72)
 metadata/_edit_lock_ = true
 
 [node name="platform4" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-120, 72)
 metadata/_edit_lock_ = true
 
 [node name="platform5" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-144, 88)
 metadata/_edit_lock_ = true
 
 [node name="platform6" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-128, 88)
 metadata/_edit_lock_ = true
 
 [node name="platform7" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-152, 104)
 metadata/_edit_lock_ = true
 
 [node name="platform8" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-136, 104)
 metadata/_edit_lock_ = true
 
 [node name="platform9" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-160, 120)
 metadata/_edit_lock_ = true
 
 [node name="platform10" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-144, 120)
 metadata/_edit_lock_ = true
 
 [node name="platform11" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-96, 56)
 metadata/_edit_lock_ = true
 
 [node name="platform12" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-80, 56)
 metadata/_edit_lock_ = true
 
 [node name="platform13" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-104, 72)
 metadata/_edit_lock_ = true
 
 [node name="platform14" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-88, 72)
 metadata/_edit_lock_ = true
 
 [node name="platform15" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-112, 88)
 metadata/_edit_lock_ = true
 
 [node name="platform16" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-96, 88)
 metadata/_edit_lock_ = true
 
 [node name="platform17" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-120, 104)
 metadata/_edit_lock_ = true
 
 [node name="platform18" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-104, 104)
 metadata/_edit_lock_ = true
 
 [node name="platform19" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-128, 120)
 metadata/_edit_lock_ = true
 
 [node name="platform20" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-112, 120)
 metadata/_edit_lock_ = true
 
 [node name="platform21" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-192, 56)
 metadata/_edit_lock_ = true
 
 [node name="platform22" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-176, 56)
 metadata/_edit_lock_ = true
 
 [node name="platform23" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-200, 72)
 metadata/_edit_lock_ = true
 
 [node name="platform24" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-184, 72)
 metadata/_edit_lock_ = true
 
 [node name="platform25" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-208, 88)
 metadata/_edit_lock_ = true
 
 [node name="platform26" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-192, 88)
 metadata/_edit_lock_ = true
 
 [node name="platform27" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-216, 104)
 metadata/_edit_lock_ = true
 
 [node name="platform28" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-200, 104)
 metadata/_edit_lock_ = true
 
 [node name="platform29" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-224, 120)
 metadata/_edit_lock_ = true
 
 [node name="platform30" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-208, 120)
 metadata/_edit_lock_ = true
 
 [node name="platform31" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-160, 56)
 metadata/_edit_lock_ = true
 
 [node name="platform32" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-144, 56)
 metadata/_edit_lock_ = true
 
 [node name="platform33" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-168, 72)
 metadata/_edit_lock_ = true
 
 [node name="platform34" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-152, 72)
 metadata/_edit_lock_ = true
 
 [node name="platform35" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-176, 88)
 metadata/_edit_lock_ = true
 
 [node name="platform36" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-160, 88)
 metadata/_edit_lock_ = true
 
 [node name="platform37" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-184, 104)
 metadata/_edit_lock_ = true
 
 [node name="platform38" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-168, 104)
 metadata/_edit_lock_ = true
 
 [node name="platform39" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-192, 120)
 metadata/_edit_lock_ = true
 
 [node name="platform40" parent="TileMap_Ground" instance=ExtResource("11_t7n8k")]
-visible = false
 z_index = -1
 position = Vector2(-176, 120)
 metadata/_edit_lock_ = true
@@ -359,6 +320,9 @@ z_index = -1
 position = Vector2(-150, -58)
 texture = ExtResource("8_n4bnq")
 
+[node name="Bird_spawn_point" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(38, -8)
+
 [node name="ForestLeaves" type="Sprite2D" parent="."]
 z_index = -1
 z_as_relative = false
@@ -366,18 +330,23 @@ position = Vector2(18, 42)
 texture = ExtResource("9_c02pl")
 
 [node name="Bird" parent="." instance=ExtResource("3_c2buy")]
+visible = false
 position = Vector2(-112, -66)
 
 [node name="Bird1" parent="." instance=ExtResource("3_c2buy")]
+visible = false
 position = Vector2(-124, -66)
 
 [node name="Bird2" parent="." instance=ExtResource("3_c2buy")]
+visible = false
 position = Vector2(-136, -66)
 
 [node name="Bird3" parent="." instance=ExtResource("3_c2buy")]
+visible = false
 position = Vector2(-148, -66)
 
 [node name="Bird4" parent="." instance=ExtResource("3_c2buy")]
+visible = false
 position = Vector2(-160, -66)
 
 [connection signal="timeout" from="GM_Timer" to="." method="_spawn_enemy"]

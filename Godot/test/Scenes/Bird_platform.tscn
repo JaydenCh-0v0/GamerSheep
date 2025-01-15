@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3agc7nic1l2t"]
 
-[ext_resource type="Script" path="res://Scripts/platform.gd" id="1_afy3g"]
+[ext_resource type="Script" path="res://Scripts/bird_platform.gd" id="1_afy3g"]
 
 [node name="platform" type="StaticBody2D" groups=["dropable_platform"]]
 collision_layer = 2

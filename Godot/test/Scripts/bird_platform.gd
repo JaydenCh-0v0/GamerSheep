@@ -1,7 +1,7 @@
 extends StaticBody2D
 
 var is_placeable: bool = true
-var is_hover: bool = false
+var obj_hover: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,7 +24,7 @@ func check_placeable() -> bool:
 
 func update_platform_color() -> void:
 	if is_placeable: 
-		if is_hover: 
+		if obj_hover > 0: 
 			modulate = Color(Color.MEDIUM_SPRING_GREEN, 0.7)
 		else:
 			modulate = Color(Color.MEDIUM_SPRING_GREEN, 0.4)

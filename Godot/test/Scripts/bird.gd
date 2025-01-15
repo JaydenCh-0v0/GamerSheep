@@ -21,13 +21,21 @@ func _ready() -> void:
 	add_to_group("friend")
 	bird_animation.speed_scale += randf_range(-0.1, 0.1)
 	action_timer.wait_time += randf_range(-0.5, 0.5)
-	if randf_range(0, 1) > 0.75: bird_animation.play("dig")
 
 func _physics_process(delta: float) -> void:
 	handle_drag(delta)
 
 	# bird_animation.play(test_animation)
 	pass
+
+func flyto(target_position: Vector2, second: float) -> void:
+	is_dragable = false
+	state_fly()
+	var tween = create_tween()
+	tween.tween_property(self, "position", target_position, second)
+	await tween.finished
+	state_idel()
+	is_dragable = true
 
 func _on_action_timer_timeout() -> void:
 	if (is_setup):
@@ -46,6 +54,9 @@ func state_attack() -> void:
 	var bullet_node = bullet_scene.instantiate()
 	bullet_node.position = position + Vector2(6,0)
 	get_tree().current_scene.add_child(bullet_node)
+
+func state_fly() -> void:
+	bird_animation.play("side_fly")
 
 func state_idel() -> void:
 	bird_animation.play("idel")
@@ -89,12 +100,12 @@ func _on_drop_area_body_entered(platform: Node2D) -> void:
 		print("on_body_entered")
 		is_inside_dropable = true
 		is_setup = true
-		platform.is_hover = true
+		platform.obj_hover += 1
 		bodyRef = platform
 
 func _on_drop_area_body_exited(platform: Node2D) -> void:
 	if platform.is_in_group("dropable_platform"):
 		is_inside_dropable = false
 		is_setup = false
-		platform.is_hover = false
+		platform.obj_hover -= 1
 		
