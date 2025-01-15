@@ -323,6 +323,18 @@ texture = ExtResource("8_n4bnq")
 [node name="Bird_spawn_point" parent="ForestBranch" instance=ExtResource("10_t047a")]
 position = Vector2(38, -8)
 
+[node name="Bird_spawn_point2" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(26, -8)
+
+[node name="Bird_spawn_point3" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(14, -8)
+
+[node name="Bird_spawn_point4" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(2, -8)
+
+[node name="Bird_spawn_point5" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(-10, -8)
+
 [node name="ForestLeaves" type="Sprite2D" parent="."]
 z_index = -1
 z_as_relative = false
