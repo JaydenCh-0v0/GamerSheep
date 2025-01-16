@@ -1,10 +1,9 @@
-[gd_scene load_steps=19 format=4 uid="uid://c12a86lcvpj0p"]
+[gd_scene load_steps=18 format=4 uid="uid://c12a86lcvpj0p"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_3whug"]
 [ext_resource type="Texture2D" uid="uid://dbja46ggythso" path="res://Sprites/ForestBackground.png" id="1_x0p1m"]
 [ext_resource type="PackedScene" uid="uid://c4ysfw3dfabx2" path="res://Scenes/Player.tscn" id="2_0gtd2"]
 [ext_resource type="Texture2D" uid="uid://ds36o8ebo13fv" path="res://Sprites/wall.png" id="2_8rh3c"]
-[ext_resource type="PackedScene" uid="uid://hacnu11rnp3e" path="res://Scenes/Bird.tscn" id="3_c2buy"]
 [ext_resource type="Texture2D" uid="uid://dentwowp56mpn" path="res://Sprites/Sprite-0002.png" id="3_emeg1"]
 [ext_resource type="Texture2D" uid="uid://ch1jwmrnu36dd" path="res://Sprites/Sprite-0001.png" id="4_mjg6a"]
 [ext_resource type="PackedScene" uid="uid://jaufnuae5n3q" path="res://Scenes/Slime.tscn" id="6_jgfyj"]
@@ -65,6 +64,36 @@ z_index = -2
 position = Vector2(120, -4)
 texture = ExtResource("1_x0p1m")
 metadata/_edit_lock_ = true
+
+[node name="ForestBranch" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-150, -58)
+texture = ExtResource("8_n4bnq")
+
+[node name="Bird_spawn_point" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(38, -8)
+metadata/_edit_lock_ = true
+
+[node name="Bird_spawn_point2" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(26, -8)
+metadata/_edit_lock_ = true
+
+[node name="Bird_spawn_point3" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(14, -8)
+metadata/_edit_lock_ = true
+
+[node name="Bird_spawn_point4" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(2, -8)
+metadata/_edit_lock_ = true
+
+[node name="Bird_spawn_point5" parent="ForestBranch" instance=ExtResource("10_t047a")]
+position = Vector2(-10, -8)
+metadata/_edit_lock_ = true
+
+[node name="ForestLeaves" type="Sprite2D" parent="."]
+z_as_relative = false
+position = Vector2(18, 42)
+texture = ExtResource("9_c02pl")
 
 [node name="TileMap_BG" type="TileMapLayer" parent="."]
 position = Vector2(12, 0)
@@ -281,7 +310,7 @@ metadata/_edit_lock_ = true
 metadata/_edit_lock_ = true
 
 [node name="BoundaryUp" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 32)
+position = Vector2(0, 34)
 shape = SubResource("WorldBoundaryShape2D_plbr1")
 metadata/_edit_lock_ = true
 
@@ -305,60 +334,14 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("WorldBoundaryShape2D_plbr1")
 metadata/_edit_lock_ = true
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.5, 2.5)
-metadata/_edit_lock_ = true
-
 [node name="Player" parent="." instance=ExtResource("2_0gtd2")]
 position = Vector2(-82, 74)
 
 [node name="Slime" parent="." instance=ExtResource("6_jgfyj")]
 position = Vector2(224, 56)
 
-[node name="ForestBranch" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(-150, -58)
-texture = ExtResource("8_n4bnq")
-
-[node name="Bird_spawn_point" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(38, -8)
-
-[node name="Bird_spawn_point2" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(26, -8)
-
-[node name="Bird_spawn_point3" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(14, -8)
-
-[node name="Bird_spawn_point4" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(2, -8)
-
-[node name="Bird_spawn_point5" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(-10, -8)
-
-[node name="ForestLeaves" type="Sprite2D" parent="."]
-z_index = -1
-z_as_relative = false
-position = Vector2(18, 42)
-texture = ExtResource("9_c02pl")
-
-[node name="Bird" parent="." instance=ExtResource("3_c2buy")]
-visible = false
-position = Vector2(-112, -66)
-
-[node name="Bird1" parent="." instance=ExtResource("3_c2buy")]
-visible = false
-position = Vector2(-124, -66)
-
-[node name="Bird2" parent="." instance=ExtResource("3_c2buy")]
-visible = false
-position = Vector2(-136, -66)
-
-[node name="Bird3" parent="." instance=ExtResource("3_c2buy")]
-visible = false
-position = Vector2(-148, -66)
-
-[node name="Bird4" parent="." instance=ExtResource("3_c2buy")]
-visible = false
-position = Vector2(-160, -66)
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2.5, 2.5)
+metadata/_edit_lock_ = true
 
 [connection signal="timeout" from="GM_Timer" to="." method="_spawn_enemy"]

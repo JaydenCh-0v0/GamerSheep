@@ -7,6 +7,8 @@ extends Area2D
 
 # Obj var
 const NAME: String = "sparrow"
+enum BIRD_STATE {FlyIn, Idel, Dig, Atk}
+var bird_state = BIRD_STATE.Idel
 var HP: int = 100
 var group: String = "friend"
 
@@ -25,30 +27,25 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	handle_drag(delta)
 
-	# bird_animation.play(test_animation)
-	pass
-
 func flyto(target_position: Vector2, second: float) -> void:
-	is_dragable = false
 	state_fly()
 	var tween = create_tween()
 	tween.tween_property(self, "position", target_position, second)
 	await tween.finished
 	state_idel()
-	is_dragable = true
 
 func _on_action_timer_timeout() -> void:
 	if (is_setup):
 		var num = randf_range(0, 1)
-		if(num > 0.85): 
-			state_dig()
-		else:
-			state_attack()
+		if(num > 0.85): state_dig()
+		else: state_attack()
 
 func state_dig() -> void:
+	bird_state = BIRD_STATE.Dig
 	bird_animation.play("dig")
 	
 func state_attack() -> void:
+	bird_state = BIRD_STATE.Atk
 	bird_animation.play("atk")
 	await get_tree().create_timer(0.3).timeout
 	var bullet_node = bullet_scene.instantiate()
@@ -56,9 +53,11 @@ func state_attack() -> void:
 	get_tree().current_scene.add_child(bullet_node)
 
 func state_fly() -> void:
+	bird_state = BIRD_STATE.FlyIn
 	bird_animation.play("side_fly")
 
 func state_idel() -> void:
+	bird_state = BIRD_STATE.Idel
 	bird_animation.play("idel")
 
 func state_die() -> void:
@@ -69,7 +68,7 @@ func _on_bird_animation_finished() -> void:
 
 # Drag Control
 func handle_drag(delta: float) -> void:
-	if is_dragable:
+	if is_dragable and bird_state != BIRD_STATE.FlyIn:
 		if Input.is_action_just_pressed("click"):
 			initialPos = global_position
 			offset = get_global_mouse_position() - global_position
