@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbja46ggythso"
-path="res://.godot/imported/ForestBackground.png-dedf31323e5df682bb2239f483731590.ctex"
+uid="uid://b5l4hnb82lmv2"
+path="res://.godot/imported/Flamingos-Sheet.png-22f64fd11d743cb5217022103c8f61bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ForestBackground.png"
-dest_files=["res://.godot/imported/ForestBackground.png-dedf31323e5df682bb2239f483731590.ctex"]
+source_file="res://Sprites/Birds/Flamingos-Sheet.png"
+dest_files=["res://.godot/imported/Flamingos-Sheet.png-22f64fd11d743cb5217022103c8f61bb.ctex"]
 
 [params]
 

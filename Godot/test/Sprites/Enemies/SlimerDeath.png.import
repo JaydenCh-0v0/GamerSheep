@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuv8rqtr38iag"
-path="res://.godot/imported/Bird.png-fa789da814bb6ed081483e812e5256f6.ctex"
+uid="uid://3fwdi32x410s"
+path="res://.godot/imported/SlimerDeath.png-dbd2b5e1207e808def5878e1bca292b9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Bird.png"
-dest_files=["res://.godot/imported/Bird.png-fa789da814bb6ed081483e812e5256f6.ctex"]
+source_file="res://Sprites/Enemies/SlimerDeath.png"
+dest_files=["res://.godot/imported/SlimerDeath.png-dbd2b5e1207e808def5878e1bca292b9.ctex"]
 
 [params]
 

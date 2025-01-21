@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bjce58jsdtqdh"
-path="res://.godot/imported/ForestBranch.png-a93bfdccfc433887801002536bdf7618.ctex"
+uid="uid://dentwowp56mpn"
+path="res://.godot/imported/Sprite-0002.png-361515d05dd8fa3bf0e1e8ac42b1a357.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ForestBranch.png"
-dest_files=["res://.godot/imported/ForestBranch.png-a93bfdccfc433887801002536bdf7618.ctex"]
+source_file="res://Sprites/Tiles/Other/Sprite-0002.png"
+dest_files=["res://.godot/imported/Sprite-0002.png-361515d05dd8fa3bf0e1e8ac42b1a357.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djqr8dujla0g6"
-path="res://.godot/imported/Foxy.png-256886c71882d79556f5a06e15eb320f.ctex"
+uid="uid://cuv8rqtr38iag"
+path="res://.godot/imported/Bird.png-a0532939c76a605150fc06ef8cb568c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Foxy.png"
-dest_files=["res://.godot/imported/Foxy.png-256886c71882d79556f5a06e15eb320f.ctex"]
+source_file="res://Sprites/Birds/Bird.png"
+dest_files=["res://.godot/imported/Bird.png-a0532939c76a605150fc06ef8cb568c9.ctex"]
 
 [params]
 

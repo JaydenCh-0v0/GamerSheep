@@ -1,15 +1,25 @@
 extends Area2D
 
+class_name JD_Bird
+
+@export var NAME: String
+@export var HP: int = 100
+
 @export var bird_animation: AnimatedSprite2D
 @export var is_setup: bool
 @export var bullet_scene: PackedScene
 @export var action_timer: Timer
 
+
+enum BIRD_STATE {
+	FlyIn, 	# when click the spawn button
+	Idel, 	# action idel
+	Dig, 	# action dig
+	Atk, 	# action atk
+}
+
 # Obj var
-const NAME: String = "sparrow"
-enum BIRD_STATE {FlyIn, Idel, Dig, Atk}
 var bird_state = BIRD_STATE.Idel
-var HP: int = 100
 var group: String = "friend"
 
 # Drag var
@@ -34,11 +44,11 @@ func flyto(target_position: Vector2, second: float) -> void:
 	await tween.finished
 	state_idel()
 
-func _on_action_timer_timeout() -> void:
-	if (is_setup):
-		var num = randf_range(0, 1)
-		if(num > 0.85): state_dig()
-		else: state_attack()
+func act() -> void:
+	#var num = randf_range(0, 1)
+	#if(num > 0.85): state_dig()
+	#else: state_attack()
+	state_attack()
 
 func state_dig() -> void:
 	bird_state = BIRD_STATE.Dig
@@ -63,6 +73,9 @@ func state_idel() -> void:
 func state_die() -> void:
 	pass
 
+func _on_action_timer_timeout() -> void:
+	if (is_setup): act()
+
 func _on_bird_animation_finished() -> void:
 	state_idel()
 
@@ -81,6 +94,8 @@ func handle_drag(delta: float) -> void:
 			if is_inside_dropable and bodyRef.check_placeable():
 				tween.tween_property(self, "position", bodyRef.position, 0.2).set_ease(Tween.EASE_OUT)
 				bodyRef.set_placeable(false)
+				is_dragable = false
+				scale = Vector2(1, 1)
 			else:
 				tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
 				
@@ -96,7 +111,7 @@ func _on_mouse_exited() -> void:
 
 func _on_drop_area_body_entered(platform: Node2D) -> void:
 	if platform.is_in_group("dropable_platform"):
-		print("on_body_entered")
+		#print("on_body_entered")
 		is_inside_dropable = true
 		is_setup = true
 		platform.obj_hover += 1

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3fwdi32x410s"
-path="res://.godot/imported/SlimerDeath.png-109aaef805e9064e212aaed645b8f0fd.ctex"
+uid="uid://d03v5v8w5xmnf"
+path="res://.godot/imported/Explode-Sheet.png-73a23e732d70a25d35cc8fb59a7ae0a2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/SlimerDeath.png"
-dest_files=["res://.godot/imported/SlimerDeath.png-109aaef805e9064e212aaed645b8f0fd.ctex"]
+source_file="res://Sprites/FireBall/Sheets/Explode-Sheet.png"
+dest_files=["res://.godot/imported/Explode-Sheet.png-73a23e732d70a25d35cc8fb59a7ae0a2.ctex"]
 
 [params]
 

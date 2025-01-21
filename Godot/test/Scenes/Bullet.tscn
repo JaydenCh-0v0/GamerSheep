@@ -1,20 +1,125 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4wi40ve7cdhn"]
+[gd_scene load_steps=15 format=3 uid="uid://c4wi40ve7cdhn"]
 
 [ext_resource type="Texture2D" uid="uid://bdx2e38fikl76" path="res://Sprites/Bullet.png" id="1_17q6g"]
 [ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_xlr75"]
+[ext_resource type="Texture2D" uid="uid://roi01ult4g47" path="res://Sprites/FireBall/Sheets/ShotLoop-Sheet.png" id="3_q5va2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2re2"]
 size = Vector2(6, 3)
 
-[node name="Bullet" type="Area2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd3yf"]
+atlas = ExtResource("1_17q6g")
+region = Rect2(0, 0, 6, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q4wja"]
+atlas = ExtResource("1_17q6g")
+region = Rect2(0, 0, 6, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcop6"]
+atlas = ExtResource("1_17q6g")
+region = Rect2(0, 0, 6, 3)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bkgwj"]
+atlas = ExtResource("1_17q6g")
+region = Rect2(0, 0, 6, 3)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rpudi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd3yf")
+}],
+"loop": false,
+"name": &"Create",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q4wja")
+}],
+"loop": false,
+"name": &"Die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcop6")
+}],
+"loop": true,
+"name": &"OnShoot",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bkgwj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omp53"]
+atlas = ExtResource("3_q5va2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbtne"]
+atlas = ExtResource("3_q5va2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8abs8"]
+atlas = ExtResource("3_q5va2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn878"]
+atlas = ExtResource("3_q5va2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cy15u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omp53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbtne")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8abs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn878")
+}],
+"loop": true,
+"name": &"Fire",
+"speed": 12.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Null",
+"speed": 5.0
+}]
+
+[node name="Bullet" type="Area2D" node_paths=PackedStringArray("bullet_body", "bullet_effect") groups=["bullet"]]
 script = ExtResource("1_xlr75")
+bullet_body = NodePath("Sprite2D")
+bullet_effect = NodePath("BulletEffect")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_f2re2")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_17q6g")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_rpudi")
+autoplay = "default"
 offset = Vector2(0, -9)
+
+[node name="BulletEffect" type="AnimatedSprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.921569)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_cy15u")
+animation = &"Null"
+autoplay = "Null"
+offset = Vector2(-9, 0)
+flip_h = true
 
 [connection signal="area_entered" from="." to="." method="_on_hit_enemy"]

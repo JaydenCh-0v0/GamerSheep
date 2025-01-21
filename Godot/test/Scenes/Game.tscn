@@ -1,16 +1,16 @@
 [gd_scene load_steps=18 format=4 uid="uid://c12a86lcvpj0p"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_3whug"]
-[ext_resource type="Texture2D" uid="uid://dbja46ggythso" path="res://Sprites/ForestBackground.png" id="1_x0p1m"]
+[ext_resource type="Texture2D" uid="uid://dbja46ggythso" path="res://Sprites/Tiles/Forest/ForestBackground.png" id="1_x0p1m"]
 [ext_resource type="PackedScene" uid="uid://c4ysfw3dfabx2" path="res://Scenes/Player.tscn" id="2_0gtd2"]
-[ext_resource type="Texture2D" uid="uid://ds36o8ebo13fv" path="res://Sprites/wall.png" id="2_8rh3c"]
-[ext_resource type="Texture2D" uid="uid://dentwowp56mpn" path="res://Sprites/Sprite-0002.png" id="3_emeg1"]
-[ext_resource type="Texture2D" uid="uid://ch1jwmrnu36dd" path="res://Sprites/Sprite-0001.png" id="4_mjg6a"]
+[ext_resource type="Texture2D" uid="uid://ds36o8ebo13fv" path="res://Sprites/Tiles/Other/wall.png" id="2_8rh3c"]
+[ext_resource type="Texture2D" uid="uid://dentwowp56mpn" path="res://Sprites/Tiles/Other/Sprite-0002.png" id="3_emeg1"]
+[ext_resource type="PackedScene" uid="uid://gkp4p1dw13l4" path="res://Scenes/Bird_spawn_list.tscn" id="4_8lyiq"]
+[ext_resource type="Texture2D" uid="uid://ch1jwmrnu36dd" path="res://Sprites/Tiles/Other/Sprite-0001.png" id="4_mjg6a"]
 [ext_resource type="PackedScene" uid="uid://jaufnuae5n3q" path="res://Scenes/Slime.tscn" id="6_jgfyj"]
-[ext_resource type="Texture2D" uid="uid://bjce58jsdtqdh" path="res://Sprites/ForestBranch.png" id="8_n4bnq"]
-[ext_resource type="Texture2D" uid="uid://dy36u5aihaogt" path="res://Sprites/ForestLeaves.png" id="9_c02pl"]
-[ext_resource type="PackedScene" uid="uid://ligsm8mlh8ln" path="res://Scenes/Bird_spawn_point.tscn" id="10_t047a"]
+[ext_resource type="Texture2D" uid="uid://dy36u5aihaogt" path="res://Sprites/Tiles/Forest/ForestLeaves.png" id="9_c02pl"]
 [ext_resource type="PackedScene" uid="uid://3agc7nic1l2t" path="res://Scenes/Bird_platform.tscn" id="11_t7n8k"]
+[ext_resource type="FontFile" uid="uid://eki1mrhd3nue" path="res://Fonts/Uranus_Pixel_11Px.ttf" id="12_ykosy"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pf15"]
 texture = ExtResource("2_8rh3c")
@@ -42,11 +42,13 @@ sources/1 = SubResource("TileSetAtlasSource_nwi4e")
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_plbr1"]
 normal = Vector2(0, 1)
 
-[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_timer")]
+[node name="Game" type="Node2D" node_paths=PackedStringArray("spawn_timer", "score_label")]
 y_sort_enabled = true
 script = ExtResource("1_3whug")
 slime_scene = ExtResource("6_jgfyj")
 spawn_timer = NodePath("GM_Timer")
+is_spawn_enemy = false
+score_label = NodePath("CanvasLayer/Label")
 metadata/_edit_lock_ = true
 
 [node name="GM_Timer" type="Timer" parent="."]
@@ -65,30 +67,7 @@ position = Vector2(120, -4)
 texture = ExtResource("1_x0p1m")
 metadata/_edit_lock_ = true
 
-[node name="ForestBranch" type="Sprite2D" parent="."]
-z_index = -1
-position = Vector2(-150, -58)
-texture = ExtResource("8_n4bnq")
-
-[node name="Bird_spawn_point" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(38, -8)
-metadata/_edit_lock_ = true
-
-[node name="Bird_spawn_point2" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(26, -8)
-metadata/_edit_lock_ = true
-
-[node name="Bird_spawn_point3" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(14, -8)
-metadata/_edit_lock_ = true
-
-[node name="Bird_spawn_point4" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(2, -8)
-metadata/_edit_lock_ = true
-
-[node name="Bird_spawn_point5" parent="ForestBranch" instance=ExtResource("10_t047a")]
-position = Vector2(-10, -8)
-metadata/_edit_lock_ = true
+[node name="ForestBranch" parent="." instance=ExtResource("4_8lyiq")]
 
 [node name="ForestLeaves" type="Sprite2D" parent="."]
 z_as_relative = false
@@ -97,7 +76,7 @@ texture = ExtResource("9_c02pl")
 
 [node name="TileMap_BG" type="TileMapLayer" parent="."]
 position = Vector2(12, 0)
-tile_map_data = PackedByteArray("AAD6/wIAAAAAAAAAAAD5/wIAAAAAAAAAAAD4/wIAAAAAAAAAAAD3/wIAAAAAAAAAAAD2/wIAAAAAAAAAAAD1/wIAAAAAAAAAAAD0/wIAAAAAAAAAAADz/wIAAAAAAAAAAADy/wIAAAAAAAAAAADx/wIAAAAAAAAAAADw/wIAAAAAAAAAAADv/wIAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD6/wIAAAAAAAAAAAD5/wIAAAAAAAAAAAD4/wIAAAAAAAAAAAD3/wIAAAAAAAAAAAD2/wIAAAAAAAAAAAD1/wIAAAAAAAAAAAD0/wIAAAAAAAAAAADz/wIAAAAAAAAAAADy/wIAAAAAAAAAAADx/wIAAAAAAAAAAADw/wIAAAAAAAAAAADv/wIAAAAAAAAAAAANAAIAAAAAAAAAAAAMAAIAAAAAAAAAAAALAAIAAAAAAAAAAAAKAAIAAAAAAAAAAAAJAAIAAAAAAAAAAAAIAAIAAAAAAAAAAAD7/wIAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_iwhqf")
 metadata/_edit_lock_ = true
 
@@ -337,11 +316,24 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("2_0gtd2")]
 position = Vector2(-82, 74)
 
-[node name="Slime" parent="." instance=ExtResource("6_jgfyj")]
-position = Vector2(224, 56)
-
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 metadata/_edit_lock_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -121.0
+offset_top = 20.0
+offset_right = -21.0
+offset_bottom = 50.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("12_ykosy")
+theme_override_font_sizes/font_size = 24
+text = "Score: 0"
+horizontal_alignment = 3
 
 [connection signal="timeout" from="GM_Timer" to="." method="_spawn_enemy"]

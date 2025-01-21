@@ -24,6 +24,7 @@ Global="*res://Scripts/global.gd"
 friend=""
 enemy=""
 dropable_platform=""
+bullet=""
 
 [input]
 

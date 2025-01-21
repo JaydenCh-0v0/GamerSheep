@@ -24,6 +24,7 @@ func hurt(demage: int):
 func die():
 	slime_animation_sprite.play("die")
 	movement_speed = 0
+	get_tree().current_scene.score += 1
 	remove_from_group("enemy")
 	await get_tree().create_timer(0.6).timeout
 	queue_free()

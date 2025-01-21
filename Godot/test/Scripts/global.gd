@@ -1,3 +1,10 @@
 extends Node
 
-var is_dragging = false
+enum gamemodes {
+	inLevel,
+	inVillage,
+}
+
+var gamemode: gamemodes = gamemodes.inLevel
+
+var is_dragging: bool = false

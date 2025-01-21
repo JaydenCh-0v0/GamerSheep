@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy36u5aihaogt"
-path="res://.godot/imported/ForestLeaves.png-52e07ae1c17a6193ae230e4cdf2303be.ctex"
+uid="uid://bw0r2asfd6vda"
+path="res://.godot/imported/IdleLoop-Sheet.png-831f03f8e36aa0538ea4273ff1bf8de0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/ForestLeaves.png"
-dest_files=["res://.godot/imported/ForestLeaves.png-52e07ae1c17a6193ae230e4cdf2303be.ctex"]
+source_file="res://Sprites/FireBall/Sheets/IdleLoop-Sheet.png"
+dest_files=["res://.godot/imported/IdleLoop-Sheet.png-831f03f8e36aa0538ea4273ff1bf8de0.ctex"]
 
 [params]
 

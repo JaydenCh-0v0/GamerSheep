@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdh6fahra03et"
-path="res://.godot/imported/Slimer.png-0364d2538674c70108d14009a943d3e1.ctex"
+uid="uid://dy36u5aihaogt"
+path="res://.godot/imported/ForestLeaves.png-08449b1eb497dcc3c2a766e5564115c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/Slimer.png"
-dest_files=["res://.godot/imported/Slimer.png-0364d2538674c70108d14009a943d3e1.ctex"]
+source_file="res://Sprites/Tiles/Forest/ForestLeaves.png"
+dest_files=["res://.godot/imported/ForestLeaves.png-08449b1eb497dcc3c2a766e5564115c9.ctex"]
 
 [params]
 
