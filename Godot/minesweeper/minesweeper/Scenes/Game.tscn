@@ -1,0 +1,469 @@
+[gd_scene load_steps=5 format=3 uid="uid://yiwe231magus"]
+
+[ext_resource type="Texture2D" uid="uid://d16sl6rqcp0ak" path="res://icon.svg" id="1_amx58"]
+[ext_resource type="PackedScene" uid="uid://ciayol3cl218t" path="res://Scenes/Hex.tscn" id="2_gqivw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_r36du"]
+texture = ExtResource("1_amx58")
+texture_region_size = Vector2i(14, 16)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:2/0/modulate = Color(1, 0, 1, 1)
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+8:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+8:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+8:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+6:5/0 = 0
+7:5/0 = 0
+8:5/0 = 0
+0:6/0 = 0
+1:6/0 = 0
+2:6/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+6:6/0 = 0
+7:6/0 = 0
+8:6/0 = 0
+0:7/0 = 0
+1:7/0 = 0
+2:7/0 = 0
+3:7/0 = 0
+4:7/0 = 0
+5:7/0 = 0
+6:7/0 = 0
+7:7/0 = 0
+8:7/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_q8jvx"]
+tile_shape = 3
+tile_size = Vector2i(14, 16)
+sources/1 = SubResource("TileSetAtlasSource_r36du")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_q8jvx")
+
+[node name="Area2D2" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(28, 20)
+
+[node name="Area2D3" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(84, 20)
+
+[node name="Area2D4" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(56, 20)
+
+[node name="Area2D5" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(70, 20)
+
+[node name="Area2D6" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(42, 20)
+
+[node name="Area2D7" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(98, 20)
+
+[node name="Area2D8" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(112, 20)
+
+[node name="Area2D9" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(168, 20)
+
+[node name="Area2D10" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(140, 20)
+
+[node name="Area2D11" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(154, 20)
+
+[node name="Area2D12" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(126, 20)
+
+[node name="Area2D13" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(21, 32)
+
+[node name="Area2D14" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(35, 32)
+
+[node name="Area2D15" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(91, 32)
+
+[node name="Area2D16" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(63, 32)
+
+[node name="Area2D17" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(77, 32)
+
+[node name="Area2D18" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(49, 32)
+
+[node name="Area2D19" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(105, 32)
+
+[node name="Area2D20" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(119, 32)
+
+[node name="Area2D21" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(175, 32)
+
+[node name="Area2D22" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(147, 32)
+
+[node name="Area2D23" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(161, 32)
+
+[node name="Area2D24" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(133, 32)
+
+[node name="Area2D26" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(28, 44)
+
+[node name="Area2D27" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(84, 44)
+
+[node name="Area2D28" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(56, 44)
+
+[node name="Area2D29" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(70, 44)
+
+[node name="Area2D30" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(42, 44)
+
+[node name="Area2D31" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(98, 44)
+
+[node name="Area2D32" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(112, 44)
+
+[node name="Area2D33" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(168, 44)
+
+[node name="Area2D34" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(140, 44)
+
+[node name="Area2D35" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(154, 44)
+
+[node name="Area2D36" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(126, 44)
+
+[node name="Area2D37" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(21, 56)
+
+[node name="Area2D38" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(35, 56)
+
+[node name="Area2D39" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(91, 56)
+
+[node name="Area2D40" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(63, 56)
+
+[node name="Area2D41" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(77, 56)
+
+[node name="Area2D42" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(49, 56)
+
+[node name="Area2D43" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(105, 56)
+
+[node name="Area2D44" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(119, 56)
+
+[node name="Area2D45" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(175, 56)
+
+[node name="Area2D46" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(147, 56)
+
+[node name="Area2D47" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(161, 56)
+
+[node name="Area2D48" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(133, 56)
+
+[node name="Area2D50" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(28, 68)
+
+[node name="Area2D51" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(84, 68)
+
+[node name="Area2D52" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(56, 68)
+
+[node name="Area2D53" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(70, 68)
+
+[node name="Area2D54" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(42, 68)
+
+[node name="Area2D55" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(98, 68)
+
+[node name="Area2D56" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(112, 68)
+
+[node name="Area2D57" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(168, 68)
+
+[node name="Area2D58" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(140, 68)
+
+[node name="Area2D59" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(154, 68)
+
+[node name="Area2D60" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(126, 68)
+
+[node name="Area2D61" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(21, 80)
+
+[node name="Area2D62" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(35, 80)
+
+[node name="Area2D63" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(91, 80)
+
+[node name="Area2D64" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(63, 80)
+
+[node name="Area2D65" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(77, 80)
+
+[node name="Area2D66" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(49, 80)
+
+[node name="Area2D67" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(105, 80)
+
+[node name="Area2D68" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(119, 80)
+
+[node name="Area2D69" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(175, 80)
+
+[node name="Area2D70" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(147, 80)
+
+[node name="Area2D71" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(161, 80)
+
+[node name="Area2D72" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(133, 80)
+
+[node name="Area2D74" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(28, 92)
+
+[node name="Area2D75" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(84, 92)
+
+[node name="Area2D76" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(56, 92)
+
+[node name="Area2D77" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(70, 92)
+
+[node name="Area2D78" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(42, 92)
+
+[node name="Area2D79" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(98, 92)
+
+[node name="Area2D80" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(112, 92)
+
+[node name="Area2D81" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(168, 92)
+
+[node name="Area2D82" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(140, 92)
+
+[node name="Area2D83" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(154, 92)
+
+[node name="Area2D84" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(126, 92)
+
+[node name="Area2D85" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(21, 104)
+
+[node name="Area2D86" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(35, 104)
+
+[node name="Area2D87" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(91, 104)
+
+[node name="Area2D88" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(63, 104)
+
+[node name="Area2D89" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(77, 104)
+
+[node name="Area2D90" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(49, 104)
+
+[node name="Area2D91" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(105, 104)
+
+[node name="Area2D92" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(119, 104)
+
+[node name="Area2D93" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(175, 104)
+
+[node name="Area2D94" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(147, 104)
+
+[node name="Area2D95" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(161, 104)
+
+[node name="Area2D96" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(133, 104)
+
+[node name="Area2D98" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(28, 116)
+
+[node name="Area2D99" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(84, 116)
+
+[node name="Area2D100" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(56, 116)
+
+[node name="Area2D101" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(70, 116)
+
+[node name="Area2D102" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(42, 116)
+
+[node name="Area2D103" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(98, 116)
+
+[node name="Area2D104" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(112, 116)
+
+[node name="Area2D105" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(168, 116)
+
+[node name="Area2D106" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(140, 116)
+
+[node name="Area2D107" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(154, 116)
+
+[node name="Area2D108" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(126, 116)
+
+[node name="Area2D109" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(21, 128)
+
+[node name="Area2D110" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(35, 128)
+
+[node name="Area2D111" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(91, 128)
+
+[node name="Area2D112" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(63, 128)
+
+[node name="Area2D113" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(77, 128)
+
+[node name="Area2D114" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(49, 128)
+
+[node name="Area2D115" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(105, 128)
+
+[node name="Area2D116" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(119, 128)
+
+[node name="Area2D117" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(175, 128)
+
+[node name="Area2D118" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(147, 128)
+
+[node name="Area2D119" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(161, 128)
+
+[node name="Area2D120" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(133, 128)
+
+[node name="Area2D122" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(28, 140)
+
+[node name="Area2D123" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(84, 140)
+
+[node name="Area2D124" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(56, 140)
+
+[node name="Area2D125" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(70, 140)
+
+[node name="Area2D126" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(42, 140)
+
+[node name="Area2D127" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(98, 140)
+
+[node name="Area2D128" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(112, 140)
+
+[node name="Area2D129" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(168, 140)
+
+[node name="Area2D130" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(140, 140)
+
+[node name="Area2D131" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(154, 140)
+
+[node name="Area2D132" parent="TileMapLayer" instance=ExtResource("2_gqivw")]
+position = Vector2(126, 140)

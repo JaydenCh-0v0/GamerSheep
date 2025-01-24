@@ -47,7 +47,6 @@ y_sort_enabled = true
 script = ExtResource("1_3whug")
 slime_scene = ExtResource("6_jgfyj")
 spawn_timer = NodePath("GM_Timer")
-is_spawn_enemy = false
 score_label = NodePath("CanvasLayer/Label")
 metadata/_edit_lock_ = true
 
