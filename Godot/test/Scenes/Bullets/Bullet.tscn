@@ -1,26 +1,26 @@
 [gd_scene load_steps=15 format=3 uid="uid://c4wi40ve7cdhn"]
 
-[ext_resource type="Texture2D" uid="uid://bdx2e38fikl76" path="res://Sprites/Bullet.png" id="1_17q6g"]
-[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_xlr75"]
-[ext_resource type="Texture2D" uid="uid://roi01ult4g47" path="res://Sprites/FireBall/Sheets/ShotLoop-Sheet.png" id="3_q5va2"]
+[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_k6o55"]
+[ext_resource type="Texture2D" uid="uid://bdx2e38fikl76" path="res://Sprites/Bullet.png" id="2_rwfua"]
+[ext_resource type="Texture2D" uid="uid://roi01ult4g47" path="res://Sprites/FireBall/Sheets/ShotLoop-Sheet.png" id="3_ki32s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f2re2"]
 size = Vector2(6, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hd3yf"]
-atlas = ExtResource("1_17q6g")
+atlas = ExtResource("2_rwfua")
 region = Rect2(0, 0, 6, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4wja"]
-atlas = ExtResource("1_17q6g")
+atlas = ExtResource("2_rwfua")
 region = Rect2(0, 0, 6, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xcop6"]
-atlas = ExtResource("1_17q6g")
+atlas = ExtResource("2_rwfua")
 region = Rect2(0, 0, 6, 3)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bkgwj"]
-atlas = ExtResource("1_17q6g")
+atlas = ExtResource("2_rwfua")
 region = Rect2(0, 0, 6, 3)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rpudi"]
@@ -59,19 +59,19 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_omp53"]
-atlas = ExtResource("3_q5va2")
+atlas = ExtResource("3_ki32s")
 region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jbtne"]
-atlas = ExtResource("3_q5va2")
+atlas = ExtResource("3_ki32s")
 region = Rect2(64, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8abs8"]
-atlas = ExtResource("3_q5va2")
+atlas = ExtResource("3_ki32s")
 region = Rect2(128, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qn878"]
-atlas = ExtResource("3_q5va2")
+atlas = ExtResource("3_ki32s")
 region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_cy15u"]
@@ -100,7 +100,7 @@ animations = [{
 }]
 
 [node name="Bullet" type="Area2D" node_paths=PackedStringArray("bullet_body", "bullet_effect") groups=["bullet"]]
-script = ExtResource("1_xlr75")
+script = ExtResource("1_k6o55")
 bullet_body = NodePath("Sprite2D")
 bullet_effect = NodePath("BulletEffect")
 

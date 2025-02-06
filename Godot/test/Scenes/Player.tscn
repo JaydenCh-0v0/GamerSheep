@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_fsgvd"]
 [ext_resource type="Texture2D" uid="uid://djqr8dujla0g6" path="res://Sprites/Villagers/Foxy.png" id="1_vebst"]
-[ext_resource type="PackedScene" uid="uid://c4wi40ve7cdhn" path="res://Scenes/Bullet.tscn" id="2_dqxqp"]
+[ext_resource type="PackedScene" uid="uid://c4wi40ve7cdhn" path="res://Scenes/Bullets/Bullet.tscn" id="2_dqxqp"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_c8xnl"]
 

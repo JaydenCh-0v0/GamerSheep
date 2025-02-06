@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://di0ogtces66y8"]
+
+[ext_resource type="Script" path="res://Scripts/card_template.gd" id="1_b4grn"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/state_machine.gd" id="2_a5m4h"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Card/disable.gd" id="3_l4p7s"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Card/cooling.gd" id="4_2510a"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Card/starving.gd" id="5_wbbxd"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Card/ready.gd" id="6_pnwap"]
+[ext_resource type="Script" path="res://Scripts/StateMachine/Card/click.gd" id="7_fifyp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vrtms"]
+bg_color = Color(1, 1, 1, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlim7"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[node name="Card" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_b4grn")
+
+[node name="Light" type="TextureRect" parent="."]
+visible = false
+clip_children = 2
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 32.0
+stretch_mode = 2
+
+[node name="Button" type="Button" parent="Light"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 92.0
+offset_bottom = 28.0
+
+[node name="Dark" type="TextureRect" parent="."]
+clip_children = 2
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 32.0
+stretch_mode = 2
+
+[node name="CoolingBar" type="ProgressBar" parent="Dark"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = 90.0
+offset_bottom = 27.0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_vrtms")
+theme_override_styles/fill = SubResource("StyleBoxFlat_nlim7")
+value = 100.0
+show_percentage = false
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("init_state")]
+script = ExtResource("2_a5m4h")
+init_state = NodePath("Disable")
+
+[node name="Disable" type="Node" parent="StateMachine"]
+script = ExtResource("3_l4p7s")
+
+[node name="Cooling" type="Node" parent="StateMachine"]
+script = ExtResource("4_2510a")
+
+[node name="Starving" type="Node" parent="StateMachine"]
+script = ExtResource("5_wbbxd")
+
+[node name="Ready" type="Node" parent="StateMachine"]
+script = ExtResource("6_pnwap")
+
+[node name="Click" type="Node" parent="StateMachine"]
+script = ExtResource("7_fifyp")

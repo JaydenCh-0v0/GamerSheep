@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ligsm8mlh8ln"]
 
-[ext_resource type="PackedScene" uid="uid://hacnu11rnp3e" path="res://Scenes/Sparrow.tscn" id="1_tfynv"]
+[ext_resource type="PackedScene" uid="uid://hacnu11rnp3e" path="res://Scenes/Birds/Sparrow.tscn" id="1_tfynv"]
 [ext_resource type="Script" path="res://Scripts/bird_spawn_point.gd" id="1_tt1fp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oja5d"]

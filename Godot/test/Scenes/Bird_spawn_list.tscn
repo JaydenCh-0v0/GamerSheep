@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://bjce58jsdtqdh" path="res://Sprites/Tiles/Forest/ForestBranch.png" id="1_meo04"]
 [ext_resource type="PackedScene" uid="uid://ligsm8mlh8ln" path="res://Scenes/Bird_spawn_point.tscn" id="2_5hsvf"]
 [ext_resource type="Script" path="res://Scripts/bird_spawn_list.gd" id="2_pi8wv"]
-[ext_resource type="PackedScene" uid="uid://dl32l5akqsw1y" path="res://Scenes/Flamingos.tscn" id="4_wnqyu"]
+[ext_resource type="PackedScene" uid="uid://dl32l5akqsw1y" path="res://Scenes/Birds/Flamingos.tscn" id="4_wnqyu"]
 
 [node name="ForestBranch" type="Sprite2D"]
 z_index = -1
@@ -32,19 +32,3 @@ metadata/_edit_lock_ = true
 [node name="Bird_spawn_point5" parent="." instance=ExtResource("2_5hsvf")]
 position = Vector2(-10, -8)
 metadata/_edit_lock_ = true
-
-[node name="ItemList" type="ItemList" parent="."]
-offset_left = 321.0
-offset_top = -28.0
-offset_right = 372.0
-offset_bottom = 98.0
-allow_reselect = true
-allow_rmb_select = true
-allow_search = false
-auto_height = true
-metadata/_edit_lock_ = true
-
-[node name="TextureButton" type="TextureButton" parent="ItemList"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bm6pmhvqfmdym"]
+
+[ext_resource type="PackedScene" uid="uid://di0ogtces66y8" path="res://Scenes/Cards/Card_template.tscn" id="1_08a1a"]
+[ext_resource type="Resource" uid="uid://b1qyfmn0h3qjm" path="res://Scenes/Cards/CardRes/Sparrow_cardRes.tres" id="2_4xc0w"]
+
+[node name="SparrowCard" instance=ExtResource("1_08a1a")]
+card_res = ExtResource("2_4xc0w")
+
+[node name="CoolingBar" parent="Dark" index="0"]
+value = 90.0

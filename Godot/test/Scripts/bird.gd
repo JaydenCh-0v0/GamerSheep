@@ -45,9 +45,6 @@ func flyto(target_position: Vector2, second: float) -> void:
 	state_idel()
 
 func act() -> void:
-	#var num = randf_range(0, 1)
-	#if(num > 0.85): state_dig()
-	#else: state_attack()
 	state_attack()
 
 func state_dig() -> void:
