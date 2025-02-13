@@ -1,8 +1,9 @@
-[gd_scene load_steps=73 format=3 uid="uid://sqrrgaxa43wa"]
+[gd_scene load_steps=74 format=3 uid="uid://sqrrgaxa43wa"]
 
 [ext_resource type="Script" path="res://Scripts/bird.gd" id="1_p0exi"]
 [ext_resource type="PackedScene" uid="uid://c4wi40ve7cdhn" path="res://Scenes/Bullets/Bullet.tscn" id="2_fbds7"]
 [ext_resource type="Texture2D" uid="uid://cuv8rqtr38iag" path="res://Sprites/Birds/Bird.png" id="3_wc40m"]
+[ext_resource type="Script" path="res://Scripts/Skills/skill_bullet_shooter.gd" id="4_p5evn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_66d64"]
 
@@ -533,7 +534,7 @@ bird_animation = NodePath("AnimatedSprite2D")
 bullet_scene = ExtResource("2_fbds7")
 action_timer = NodePath("ActionTimer")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionArea" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 scale = Vector2(0.8, 0.8)
 shape = SubResource("CircleShape2D_66d64")
@@ -546,10 +547,6 @@ autoplay = "idel"
 offset = Vector2(0, -8)
 metadata/_edit_lock_ = true
 
-[node name="ActionTimer" type="Timer" parent="."]
-wait_time = 3.0
-autostart = true
-
 [node name="DropArea" type="Area2D" parent="."]
 position = Vector2(0, -2)
 collision_layer = 3
@@ -560,9 +557,20 @@ rotation = 1.5708
 shape = SubResource("CircleShape2D_kaxu1")
 debug_color = Color(1, 0, 0, 0.0980392)
 
+[node name="BasicSkill" type="Node" parent="."]
+
+[node name="Skill_BulletShooter" type="Node2D" parent="BasicSkill"]
+script = ExtResource("4_p5evn")
+
+[node name="UltimateSkill" type="Node" parent="."]
+
+[node name="ActionTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_bird_animation_finished"]
-[connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]
 [connection signal="body_entered" from="DropArea" to="." method="_on_drop_area_body_entered"]
 [connection signal="body_exited" from="DropArea" to="." method="_on_drop_area_body_exited"]
+[connection signal="timeout" from="ActionTimer" to="." method="_on_action_timer_timeout"]

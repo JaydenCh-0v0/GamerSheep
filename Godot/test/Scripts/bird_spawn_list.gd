@@ -2,13 +2,11 @@ extends Sprite2D
 
 class_name JD_Bird_Spawn_List
 
+@export var bird_points: Array[JD_Bird_Spawn_Point] # true mean have bird, false mean no bird
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func spwan_bird(bird_scene: PackedScene) -> bool:
+	for bird_point in bird_points:
+		if not bird_point.had_bird:
+			bird_point.spawn_bird(bird_scene)
+			return true
+	return false # no space for spwan

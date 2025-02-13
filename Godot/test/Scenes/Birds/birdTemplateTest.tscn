@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://d2jhp7npvujhl"]
+
+[ext_resource type="PackedScene" uid="uid://sqrrgaxa43wa" path="res://Scenes/Birds/BirdTemplate.tscn" id="1_p4iwt"]
+
+[node name="birdTemplateTest" instance=ExtResource("1_p4iwt")]

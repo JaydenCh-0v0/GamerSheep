@@ -24,5 +24,5 @@ func _spawn_enemy() -> void:
 		slime_node.position = Vector2(260, randf_range(56, 120))
 		get_tree().current_scene.add_child(slime_node)
 
-func _spawn_bird(pos: Vector2) -> void:
-	pass
+func spwan_bird(bird_scene: PackedScene) -> void:
+	$Background/ForestBranch.spwan_bird(bird_scene)

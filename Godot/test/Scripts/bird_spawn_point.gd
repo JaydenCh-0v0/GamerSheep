@@ -1,17 +1,14 @@
 extends Area2D
 
+class_name JD_Bird_Spawn_Point
+
+@export var POINT_ID: int
 @export var wait_time: float = 0.5
 @export var had_bird: bool = false
 @export var bird_spawn_timer: Timer
-@export var bird_scene: PackedScene
 
-func _ready() -> void:
-	if not had_bird: spawn_bird()
-
-func _process(delta: float) -> void:
-	pass
-
-func spawn_bird() -> void:
+func spawn_bird(bird_scene: PackedScene) -> void:
+	had_bird = true
 	var second = 3 + 1 * randf_range(0, 1)
 	bird_spawn_timer.start(wait_time)
 	await bird_spawn_timer.timeout

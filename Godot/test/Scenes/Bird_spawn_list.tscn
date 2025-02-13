@@ -1,34 +1,32 @@
-[gd_scene load_steps=5 format=3 uid="uid://gkp4p1dw13l4"]
+[gd_scene load_steps=4 format=3 uid="uid://gkp4p1dw13l4"]
 
 [ext_resource type="Texture2D" uid="uid://bjce58jsdtqdh" path="res://Sprites/Tiles/Forest/ForestBranch.png" id="1_meo04"]
 [ext_resource type="PackedScene" uid="uid://ligsm8mlh8ln" path="res://Scenes/Bird_spawn_point.tscn" id="2_5hsvf"]
 [ext_resource type="Script" path="res://Scripts/bird_spawn_list.gd" id="2_pi8wv"]
-[ext_resource type="PackedScene" uid="uid://dl32l5akqsw1y" path="res://Scenes/Birds/Flamingos.tscn" id="4_wnqyu"]
 
-[node name="ForestBranch" type="Sprite2D"]
+[node name="ForestBranch" type="Sprite2D" node_paths=PackedStringArray("bird_points")]
 z_index = -1
 position = Vector2(-150, -58)
 texture = ExtResource("1_meo04")
 script = ExtResource("2_pi8wv")
-metadata/_edit_lock_ = true
+bird_points = [NodePath("Bird_spawn_point0"), NodePath("Bird_spawn_point1"), NodePath("Bird_spawn_point2"), NodePath("Bird_spawn_point3"), NodePath("Bird_spawn_point4")]
 
-[node name="Bird_spawn_point" parent="." instance=ExtResource("2_5hsvf")]
+[node name="Bird_spawn_point0" parent="." instance=ExtResource("2_5hsvf")]
 position = Vector2(38, -8)
-bird_scene = ExtResource("4_wnqyu")
 metadata/_edit_lock_ = true
 
-[node name="Bird_spawn_point2" parent="." instance=ExtResource("2_5hsvf")]
+[node name="Bird_spawn_point1" parent="." instance=ExtResource("2_5hsvf")]
 position = Vector2(26, -8)
 metadata/_edit_lock_ = true
 
-[node name="Bird_spawn_point3" parent="." instance=ExtResource("2_5hsvf")]
+[node name="Bird_spawn_point2" parent="." instance=ExtResource("2_5hsvf")]
 position = Vector2(14, -8)
 metadata/_edit_lock_ = true
 
-[node name="Bird_spawn_point4" parent="." instance=ExtResource("2_5hsvf")]
+[node name="Bird_spawn_point3" parent="." instance=ExtResource("2_5hsvf")]
 position = Vector2(2, -8)
 metadata/_edit_lock_ = true
 
-[node name="Bird_spawn_point5" parent="." instance=ExtResource("2_5hsvf")]
+[node name="Bird_spawn_point4" parent="." instance=ExtResource("2_5hsvf")]
 position = Vector2(-10, -8)
 metadata/_edit_lock_ = true

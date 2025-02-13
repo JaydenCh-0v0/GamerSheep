@@ -1,14 +1,13 @@
 extends Area2D
-
-class_name JD_Bird
+class_name BirdTemplate
 
 @export var NAME: String
 @export var HP: int = 100
 
 @export var bird_animation: AnimatedSprite2D
-@export var is_setup: bool
 @export var bullet_scene: PackedScene
 @export var action_timer: Timer
+@export var is_setup: bool
 
 
 enum BIRD_STATE {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://c12a86lcvpj0p"]
+[gd_scene load_steps=24 format=4 uid="uid://c12a86lcvpj0p"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_3whug"]
 [ext_resource type="Texture2D" uid="uid://dbja46ggythso" path="res://Sprites/Tiles/Forest/ForestBackground.png" id="1_x0p1m"]
@@ -12,8 +12,11 @@
 [ext_resource type="Texture2D" uid="uid://dy36u5aihaogt" path="res://Sprites/Tiles/Forest/ForestLeaves.png" id="9_c02pl"]
 [ext_resource type="PackedScene" uid="uid://3agc7nic1l2t" path="res://Scenes/Bird_platform.tscn" id="11_t7n8k"]
 [ext_resource type="Texture2D" uid="uid://dd210cag3meva" path="res://Sprites/Birds/BirdChooser.png" id="12_2x872"]
+[ext_resource type="PackedScene" uid="uid://d2jhp7npvujhl" path="res://Scenes/Birds/birdTemplateTest.tscn" id="12_hswh8"]
 [ext_resource type="FontFile" uid="uid://eki1mrhd3nue" path="res://Fonts/Uranus_Pixel_11Px.ttf" id="12_ykosy"]
 [ext_resource type="PackedScene" uid="uid://bm6pmhvqfmdym" path="res://Scenes/Cards/sparrow_card.tscn" id="13_8l5pr"]
+[ext_resource type="Script" path="res://Scripts/test_button.gd" id="16_80gx2"]
+[ext_resource type="PackedScene" uid="uid://hacnu11rnp3e" path="res://Scenes/Birds/Sparrow.tscn" id="17_2fir5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6pf15"]
 texture = ExtResource("2_8rh3c")
@@ -327,6 +330,9 @@ metadata/_edit_lock_ = true
 [node name="Player" parent="." instance=ExtResource("2_0gtd2")]
 position = Vector2(-82, 74)
 
+[node name="birdTemplateTest" parent="." instance=ExtResource("12_hswh8")]
+position = Vector2(61, -35)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2.5, 2.5)
 metadata/_edit_lock_ = true
@@ -385,4 +391,14 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 metadata/_edit_lock_ = true
 
+[node name="Button" type="Button" parent="."]
+offset_left = 48.0
+offset_top = -107.0
+offset_right = 142.0
+offset_bottom = -76.0
+text = "spwan bird"
+script = ExtResource("16_80gx2")
+bird_scene = ExtResource("17_2fir5")
+
 [connection signal="timeout" from="GM_Timer" to="." method="_spawn_enemy"]
+[connection signal="button_up" from="Button" to="Button" method="_on_button_up"]
