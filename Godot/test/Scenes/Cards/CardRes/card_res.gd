@@ -10,4 +10,4 @@ class_name cardRes
 @export var card_shadow:Texture2D
 #@export var card_type:CardTypeManager.CARD_TYPE
 
-@export var plant_scene:PackedScene
+@export var bird_scene:PackedScene

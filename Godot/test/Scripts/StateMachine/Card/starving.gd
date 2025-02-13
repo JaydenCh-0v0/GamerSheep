@@ -7,7 +7,7 @@ func enter():
 	card_template.card_dark.visible = true
 
 func update(_delta: float):
-	if card_template.is_sun_enough:
+	if card_template.is_energy_enough:
 		update_state.emit("Ready")
 
 func physics_update(_delta: float):pass

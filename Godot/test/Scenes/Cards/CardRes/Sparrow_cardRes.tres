@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="cardRes" load_steps=4 format=3 uid="uid://b1qyfmn0h3qjm"]
+[gd_resource type="Resource" script_class="cardRes" load_steps=5 format=3 uid="uid://b1qyfmn0h3qjm"]
 
+[ext_resource type="PackedScene" uid="uid://hacnu11rnp3e" path="res://Scenes/Birds/Sparrow.tscn" id="1_2hlv4"]
 [ext_resource type="Texture2D" uid="uid://cvuluacwn8wpi" path="res://Sprites/Birds/Sparrow/Sparrow_button_dark.png" id="1_51181"]
 [ext_resource type="Texture2D" uid="uid://dw68n6ys3vy11" path="res://Sprites/Birds/Sparrow/Sparrow_button.png" id="2_2yo1o"]
 [ext_resource type="Script" path="res://Scenes/Cards/CardRes/card_res.gd" id="3_royx6"]
@@ -11,3 +12,4 @@ cool_time = 2.0
 card_light = ExtResource("2_2yo1o")
 card_dark = ExtResource("1_51181")
 max_health = 100
+bird_scene = ExtResource("1_2hlv4")

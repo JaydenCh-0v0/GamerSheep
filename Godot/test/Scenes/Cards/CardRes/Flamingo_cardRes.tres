@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="cardRes" load_steps=5 format=3 uid="uid://bqjxk5aqjnkre"]
+
+[ext_resource type="Texture2D" uid="uid://dltlyt0lqv34e" path="res://Sprites/Birds/Flamingo/Flamingo_button_dark.png" id="1_oybf3"]
+[ext_resource type="PackedScene" uid="uid://dl32l5akqsw1y" path="res://Scenes/Birds/Flamingos.tscn" id="1_umv5p"]
+[ext_resource type="Texture2D" uid="uid://j0yov1osgo1" path="res://Sprites/Birds/Flamingo/Flamingo_button.png" id="2_ftpfe"]
+[ext_resource type="Script" path="res://Scenes/Cards/CardRes/card_res.gd" id="3_b426o"]
+
+[resource]
+script = ExtResource("3_b426o")
+sun_num = 0
+cool_time = 2.0
+card_light = ExtResource("2_ftpfe")
+card_dark = ExtResource("1_oybf3")
+max_health = 100
+bird_scene = ExtResource("1_umv5p")

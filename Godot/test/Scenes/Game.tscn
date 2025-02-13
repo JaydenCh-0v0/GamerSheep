@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c12a86lcvpj0p"]
+[gd_scene load_steps=25 format=4 uid="uid://c12a86lcvpj0p"]
 
 [ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_3whug"]
 [ext_resource type="Texture2D" uid="uid://dbja46ggythso" path="res://Sprites/Tiles/Forest/ForestBackground.png" id="1_x0p1m"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://d2jhp7npvujhl" path="res://Scenes/Birds/birdTemplateTest.tscn" id="12_hswh8"]
 [ext_resource type="FontFile" uid="uid://eki1mrhd3nue" path="res://Fonts/Uranus_Pixel_11Px.ttf" id="12_ykosy"]
 [ext_resource type="PackedScene" uid="uid://bm6pmhvqfmdym" path="res://Scenes/Cards/sparrow_card.tscn" id="13_8l5pr"]
+[ext_resource type="PackedScene" uid="uid://rkn6g1fgwvgk" path="res://Scenes/Cards/flamingo_card.tscn" id="16_4jsxa"]
 [ext_resource type="Script" path="res://Scripts/test_button.gd" id="16_80gx2"]
 [ext_resource type="PackedScene" uid="uid://hacnu11rnp3e" path="res://Scenes/Birds/Sparrow.tscn" id="17_2fir5"]
 
@@ -390,6 +391,9 @@ metadata/_edit_lock_ = true
 [node name="SparrowCard" parent="Node2D/TextureRect/VBoxContainer" instance=ExtResource("13_8l5pr")]
 layout_mode = 2
 metadata/_edit_lock_ = true
+
+[node name="Card" parent="Node2D/TextureRect/VBoxContainer" instance=ExtResource("16_4jsxa")]
+layout_mode = 2
 
 [node name="Button" type="Button" parent="."]
 offset_left = 48.0
