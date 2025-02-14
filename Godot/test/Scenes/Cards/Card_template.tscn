@@ -20,7 +20,6 @@ anchors_preset = 0
 script = ExtResource("1_b4grn")
 
 [node name="Light" type="TextureRect" parent="."]
-visible = false
 clip_children = 2
 layout_mode = 0
 offset_right = 96.0
@@ -33,8 +32,10 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 92.0
 offset_bottom = 28.0
+flat = true
 
 [node name="Dark" type="TextureRect" parent="."]
+visible = false
 clip_children = 2
 layout_mode = 0
 offset_right = 96.0
@@ -71,3 +72,5 @@ script = ExtResource("6_pnwap")
 
 [node name="Click" type="Node" parent="StateMachine"]
 script = ExtResource("7_fifyp")
+
+[connection signal="pressed" from="Light/Button" to="." method="_on_button_pressed"]

@@ -9,7 +9,6 @@ size = Vector2(2, 6)
 [node name="Bird_spawn_point" type="Area2D" node_paths=PackedStringArray("bird_spawn_timer")]
 script = ExtResource("1_tt1fp")
 bird_spawn_timer = NodePath("BirdSpawnTimer")
-bird_scene = ExtResource("1_tfynv")
 
 [node name="Bird" parent="." instance=ExtResource("1_tfynv")]
 visible = false

@@ -8,8 +8,8 @@ func enter():
 
 
 func update(_delta: float):
-	if not card_template.is_sun_enough:
-		update_state.emit("Starving")
+	#if not card_template.is_energy_enough:
+		#update_state.emit("Starving")
 	if card_template.is_click:
 		update_state.emit("Click")
 

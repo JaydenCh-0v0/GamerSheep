@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://rkn6g1fgwvgk"]
 
 [ext_resource type="PackedScene" uid="uid://di0ogtces66y8" path="res://Scenes/Cards/Card_template.tscn" id="1_lihlp"]
-[ext_resource type="Resource" uid="uid://bqjxk5aqjnkre" path="res://Scenes/Cards/CardRes/Flamingo_cardRes.tres" id="2_u5km8"]
+[ext_resource type="Resource" uid="uid://ck1lpq1lufsrb" path="res://Scenes/Cards/CardRes/Flamingos_cardRes.tres" id="2_xpsl5"]
 
 [node name="Card" instance=ExtResource("1_lihlp")]
-card_res = ExtResource("2_u5km8")
+card_res = ExtResource("2_xpsl5")
 
 [node name="Light" parent="." index="0"]
 visible = true

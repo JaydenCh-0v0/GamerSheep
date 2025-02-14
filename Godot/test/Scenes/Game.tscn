@@ -394,6 +394,7 @@ metadata/_edit_lock_ = true
 
 [node name="Card" parent="Node2D/TextureRect/VBoxContainer" instance=ExtResource("16_4jsxa")]
 layout_mode = 2
+metadata/_edit_lock_ = true
 
 [node name="Button" type="Button" parent="."]
 offset_left = 48.0

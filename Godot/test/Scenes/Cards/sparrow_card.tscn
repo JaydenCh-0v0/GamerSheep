@@ -6,5 +6,10 @@
 [node name="SparrowCard" instance=ExtResource("1_08a1a")]
 card_res = ExtResource("2_4xc0w")
 
+[node name="Light" parent="." index="0"]
+visible = true
+
 [node name="CoolingBar" parent="Dark" index="0"]
 value = 90.0
+
+[connection signal="pressed" from="Light/Button" to="." method="_on_button_pressed"]

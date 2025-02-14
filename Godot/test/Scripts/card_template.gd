@@ -29,5 +29,6 @@ func _is_energy_enough(sun_num):
 
 func _on_button_pressed() -> void:
 	is_click = true
+	print("clicked")
 	get_tree().current_scene.spwan_bird(card_res.bird_scene)
 	card_click.emit(card_res)

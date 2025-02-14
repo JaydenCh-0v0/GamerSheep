@@ -14,7 +14,7 @@ func update(_delta: float):
 	card_template.cd_time += _delta
 	card_template.card_cool_progress.value = (card_template.card_res.cool_time - card_template.cd_time) / card_template.card_res.cool_time * 100
 	if card_template.cd_time >= card_template.card_res.cool_time:
-		update_state.emit("Starving")
+		update_state.emit("Ready")
 		
 func physics_update(_delta: float):pass
 
