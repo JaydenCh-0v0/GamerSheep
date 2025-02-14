@@ -35,7 +35,6 @@ offset_bottom = 28.0
 flat = true
 
 [node name="Dark" type="TextureRect" parent="."]
-visible = false
 clip_children = 2
 layout_mode = 0
 offset_right = 96.0
@@ -47,7 +46,7 @@ layout_mode = 0
 offset_left = 6.0
 offset_top = 5.0
 offset_right = 90.0
-offset_bottom = 27.0
+offset_bottom = 29.0
 mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_vrtms")
 theme_override_styles/fill = SubResource("StyleBoxFlat_nlim7")

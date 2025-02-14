@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("4_xuy55")
 sun_num = 0
-cool_time = 2.0
+cool_time = 3.0
 card_light = ExtResource("3_vykcb")
 card_dark = ExtResource("2_edug5")
 max_health = 100

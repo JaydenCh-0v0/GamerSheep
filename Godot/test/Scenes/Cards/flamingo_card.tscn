@@ -5,6 +5,3 @@
 
 [node name="Card" instance=ExtResource("1_lihlp")]
 card_res = ExtResource("2_xpsl5")
-
-[node name="Light" parent="." index="0"]
-visible = true
