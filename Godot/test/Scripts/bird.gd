@@ -93,8 +93,11 @@ func handle_drag(delta: float) -> void:
 				is_dragable = false
 				scale = Vector2(1, 1)
 			else:
-				tween.tween_property(self, "global_position", initialPos, 0.2).set_ease(Tween.EASE_OUT)
-				
+				state_fly()
+				tween.tween_property(self, "global_position", initialPos, 0.5+randf_range(-0.1, 0.1)).set_ease(Tween.EASE_OUT)
+				await tween.finished
+				state_idel()
+	
 func _on_mouse_entered() -> void:
 	if not Global.is_dragging and not is_setup:
 		is_dragable = true

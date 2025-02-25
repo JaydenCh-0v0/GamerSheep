@@ -525,6 +525,7 @@ animations = [{
 radius = 0.5
 
 [node name="Sparrow" type="Area2D" node_paths=PackedStringArray("bird_animation", "action_timer") groups=["friend"]]
+position = Vector2(50, 38)
 collision_layer = 3
 script = ExtResource("1_5p58k")
 NAME = "Sparrow"

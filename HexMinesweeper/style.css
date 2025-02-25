@@ -201,3 +201,83 @@ body {
 .text-p4 {
   color: rgb(103, 183, 249);
 }
+
+/* cursor follower */
+.cursor-follower {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease;
+  transform: translate(-50%, -50%);
+}
+
+.follower-body {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 182, 193, 0.8);
+  border-radius: 50%;
+  position: relative;
+  animation: bounce 1s infinite alternate;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.follower-eyes {
+  position: absolute;
+  top: 25%;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.eye {
+  width: 8px;
+  height: 8px;
+  background: #000;
+  border-radius: 50%;
+  position: relative;
+}
+
+.eye::after {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  border-radius: 50%;
+}
+
+@keyframes bounce {
+  from {
+      transform: translateY(0);
+  }
+  to {
+      transform: translateY(-5px);
+  }
+}
+
+/* 添加悬浮状态 */
+.cursor-follower.hover {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* 添加点击状态 */
+.cursor-follower.click {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+
+.follower-crown {
+    position: absolute;
+    top: -18px;
+    left: calc(50% + 6px);
+    transform: translateX(-50%) rotate(15deg);
+    font-size: 20px;
+    display: none;
+    animation: floatCrown 2s ease-in-out infinite;
+}
+
+@keyframes floatCrown {
+    0%, 100% { transform: translateX(-50%) translateY(0) rotate(15deg); } /* 保持旋转角度 */
+    50% { transform: translateX(-50%) translateY(-5px) rotate(15deg); } /* 保持旋转角度 */
+}

@@ -6,15 +6,17 @@ const numCols = 16;
 const numMines = 45;
 const numSurvivors = 0;
 
+let follower
+
 let currentPlayer = 0;
-let numPlayer = 3;
+let numPlayer = 4;
 let gamemode;
 let numHP = 3;
 let playerInfo = [
-  {ID: 'p1', Name: 'Player A', HP: numHP, Score: 0, Oxygen: 100, Territories: 0},
-  {ID: 'p2', Name: 'Player B', HP: numHP, Score: 0, Oxygen: 100, Territories: 0},
-  {ID: 'p3', Name: 'Player C', HP: numHP, Score: 0, Oxygen: 100, Territories: 0},
-  {ID: 'p4', Name: 'Player D', HP: numHP, Score: 0, Oxygen: 100, Territories: 0},
+  {ID: 'p1', Emoji: '🦖', Name: 'Player A', HP: numHP, Score: 0, Msg: '到達了這個星球', Territories: 0, OldTerritories: 0},
+  {ID: 'p2', Emoji: '🐝', Name: 'Player B', HP: numHP, Score: 0, Msg: '到達了這個星球', Territories: 0, OldTerritories: 0},
+  {ID: 'p3', Emoji: '🦉', Name: 'Player C', HP: numHP, Score: 0, Msg: '到達了這個星球', Territories: 0, OldTerritories: 0},
+  {ID: 'p4', Emoji: '🦈', Name: 'Player D', HP: numHP, Score: 0, Msg: '到達了這個星球', Territories: 0, OldTerritories: 0},
 ]
 
 let round = 1;
@@ -29,7 +31,147 @@ let mineCountElement;
 let flagCountElement;
 let restartButtonElement;
 
+// 在文件开头添加音效数组
+const explosionSounds = [
+    'sound/Explosion1.ogg',
+    'sound/Explosion2.ogg',
+    'sound/Explosion3.ogg',
+    'sound/Explosion4.ogg',
+];
+
+function playRandomExplosion() {
+    const randomIndex = Math.floor(Math.random() * explosionSounds.length);
+    const audio = new Audio(explosionSounds[randomIndex]);
+    audio.play();
+}
+
+function playSound(path) {
+  const audio = new Audio(path);
+  audio.play();
+}
+
+
+// follower function
+class CursorFollower {
+  constructor() {
+      this.follower = document.querySelector('.cursor-follower');
+      this.eyes = this.follower.querySelectorAll('.eye');
+      this.mouseX = 0;
+      this.mouseY = 0;
+      this.followerX = 0;
+      this.followerY = 0;
+      this.speed = 0.1; // 跟随速度
+      this.isAnimating = false;
+      this.crown = this.follower.querySelector('.follower-crown');
+
+      this.init();
+      this.updateFollower(); // 添加初始颜色设置
+  }
+
+  init() {
+      // 监听鼠标移动
+      document.addEventListener('mousemove', (e) => {
+          this.mouseX = e.clientX;
+          this.mouseY = e.clientY;
+          this.updateEyes(e);
+          if (!this.isAnimating) {
+              this.animate();
+          }
+      });
+
+      // 监听鼠标进入可交互元素
+      document.querySelectorAll('.hexagon, button, .game-UtilCatFace').forEach(element => {
+          element.addEventListener('mouseenter', () => {
+              this.follower.classList.add('hover');
+          });
+          
+          element.addEventListener('mouseleave', () => {
+              this.follower.classList.remove('hover');
+          });
+      });
+
+      // 监听鼠标点击
+      document.addEventListener('mousedown', () => {
+          this.follower.classList.add('click');
+      });
+
+      document.addEventListener('mouseup', () => {
+          this.follower.classList.remove('click');
+      });
+
+      this.updateFollower(); // 初始化时设置颜色
+  }
+
+  updateEyes(e) {
+      this.eyes.forEach(eye => {
+          const eyeRect = eye.getBoundingClientRect();
+          const eyeCenterX = eyeRect.left + eyeRect.width / 2;
+          const eyeCenterY = eyeRect.top + eyeRect.height / 2;
+          
+          const angle = Math.atan2(e.clientY - eyeCenterY, e.clientX - eyeCenterX);
+          const distance = Math.min(2, Math.hypot(e.clientX - eyeCenterX, e.clientY - eyeCenterY) / 10);
+          
+          const x = Math.cos(angle) * distance;
+          const y = Math.sin(angle) * distance;
+          
+          eye.style.transform = `translate(${x}px, ${y}px)`;
+      });
+  }
+
+  animate() {
+      this.isAnimating = true;
+
+      // 平滑跟随效果，添加偏移量使跟随器位于鼠标右侧
+      this.followerX += (this.mouseX + 30 - this.followerX) * this.speed; // 添加 20px 的横向偏移
+      this.followerY += (this.mouseY + 20 - this.followerY) * this.speed;
+
+      this.follower.style.left = `${this.followerX}px`;
+      this.follower.style.top = `${this.followerY}px`;
+
+      // 继续动画
+      if (
+          Math.abs(this.mouseX - this.followerX) > 0.1 ||
+          Math.abs(this.mouseY - this.followerY) > 0.1
+      ) {
+          requestAnimationFrame(() => this.animate());
+      } else {
+          this.isAnimating = false;
+      }
+  }
+
+  // 添加更新颜色的方法
+  updateFollower() {
+      const playerColors = {
+          'p1': 'rgba(217, 84, 147, 0.8)',  // 粉色
+          'p2': 'rgba(226, 241, 116, 0.8)', // 黄色
+          'p3': 'rgba(133, 248, 104, 0.8)', // 绿色
+          'p4': 'rgba(103, 183, 249, 0.8)'  // 蓝色
+      };
+      console.log('当前玩家ID:', playerInfo[currentPlayer].ID);
+      console.log('玩家颜色映射:', playerColors);
+      const currentPlayerID = playerInfo[currentPlayer].ID;
+      this.follower.querySelector('.follower-body').style.backgroundColor = playerColors[currentPlayerID];
+      document.getElementById(`follower-crown`).textContent = `${playerInfo[currentPlayer].Emoji}`;
+  }
+
+  // 添加显示/隐藏皇冠的方法
+  toggleCrown(show) {
+      if (this.crown) {
+          this.crown.style.display = show ? 'block' : 'none';
+      }
+  }
+
+  // 添加临时显示皇冠的方法（比如获胜时）
+  showCrownTemporarily(duration = 3000) {
+      this.toggleCrown(true);
+      setTimeout(() => {
+          this.toggleCrown(false);
+      }, duration);
+  }
+}
+
 function initializeGame() {
+  follower = new CursorFollower();
   generateGrid();
   plantMines();
   plantSurvivor();
@@ -134,10 +276,11 @@ function getNeighbors(row, col) {
 
 function renderPlayerCard() {
   playerInfo.forEach(pinfo => {
+    document.getElementById(`name-${pinfo.ID}`).textContent = `${pinfo.Emoji}: ${pinfo.Name}`;
     document.getElementById(`hp-count-${pinfo.ID}`).textContent = _textHeart(pinfo.HP);
     document.getElementById(`score-count-${pinfo.ID}`).textContent  = `Score: ${pinfo.Score}`;
     document.getElementById(`territories-count-${pinfo.ID}`).textContent  = `Territories: ${pinfo.Territories}`;
-    document.getElementById(`oxygen-count-${pinfo.ID}`).textContent = `Oxygen: ${pinfo.Oxygen} %`;
+    document.getElementById(`msg-${pinfo.ID}`).textContent = `[ ${pinfo.Name} ${pinfo.Msg} ]`;
     document.getElementById(`id-${pinfo.ID}`).classList.remove('focus');
   });
   document.getElementById(`id-${playerInfo[currentPlayer].ID}`).classList.add('focus');
@@ -187,7 +330,8 @@ function renderGrid() {
 
       hexagon.addEventListener('click', () => {
         if (!gameOver && !cell.opened && !cell.flagged) {
-          openCell(row, col);
+          openCell(row, col, true);
+          checkTerritories();
           nextPlayer();
         }
       });
@@ -206,6 +350,25 @@ function renderGrid() {
   updateInfoBox();
 }
 
+function checkTerritories() {
+  player = playerInfo[currentPlayer]
+  terr = playerInfo[currentPlayer].Territories
+  old_terr = playerInfo[currentPlayer].OldTerritories
+  new_terr = terr - old_terr
+  if (new_terr > 1) { //代表玩家發現多於一塊土地
+    if (new_terr < 50) { 
+      playSound('sound/Found_Village.oga')
+      playerInfo[currentPlayer].Score += 3
+      playerInfo[currentPlayer].Msg = `發現了小果園(面積:${new_terr})，獲得了${3}分✨`
+    } else{
+      playSound('sound/Found_City.oga')
+      playerInfo[currentPlayer].Score += 6
+      playerInfo[currentPlayer].Msg = `發現了大森林(面積:${new_terr})，獲得了${6}分✨`
+    }
+  }
+  playerInfo[currentPlayer].OldTerritories = terr
+}
+
 function nextPlayer() {
   do{
     currentPlayer++;
@@ -214,6 +377,8 @@ function nextPlayer() {
   } while (playerInfo[currentPlayer].HP === 0 && !gameOver)
   
   renderPlayerCard();
+  // 添加更新跟班颜色的调用
+  follower.updateFollower();
 }
 
 function initializeInfoBox() {
@@ -254,13 +419,17 @@ function getRandomRGBColor() {
   return `rgb(${r}, ${g}, ${b})`;
 }
 
-function openCell(row, col) {
+function openCell(row, col, isTarget=false) {
   const cell = grid[row][col];
   if (cell.mine) {
     cell.opened = true;
     cell.owner = playerInfo[currentPlayer].ID;
     playerInfo[currentPlayer].Territories++;
     playerInfo[currentPlayer].HP--;
+    
+    // 播放随机爆炸音效
+    playRandomExplosion();
+    
     if(_isAllPlayerDie()) {
       gameOver = true;
       revealMines();
@@ -270,6 +439,10 @@ function openCell(row, col) {
   } else if (!cell.opened) {
     cell.opened = true;
     cell.owner = playerInfo[currentPlayer].ID;
+    if (isTarget) {
+      playerInfo[currentPlayer].Score += cell.number
+      playerInfo[currentPlayer].Msg = `找到食物，獲得了${cell.number}分`
+    }
     playerInfo[currentPlayer].Territories++;
     openCells++;
     if (cell.number === 0) {
@@ -331,3 +504,4 @@ function restartGame() {
 }
 
 initializeGame();
+follower.toggleCrown(true)
