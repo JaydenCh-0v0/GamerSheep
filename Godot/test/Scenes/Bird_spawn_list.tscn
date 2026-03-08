@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bjce58jsdtqdh" path="res://Sprites/Tiles/Forest/ForestBranch.png" id="1_meo04"]
 [ext_resource type="PackedScene" uid="uid://ligsm8mlh8ln" path="res://Scenes/Bird_spawn_point.tscn" id="2_5hsvf"]
-[ext_resource type="Script" path="res://Scripts/bird_spawn_list.gd" id="2_pi8wv"]
+[ext_resource type="Script" uid="uid://bwtu1f0m362af" path="res://Scripts/bird_spawn_list.gd" id="2_pi8wv"]
 
 [node name="ForestBranch" type="Sprite2D" node_paths=PackedStringArray("bird_points")]
 z_index = -1

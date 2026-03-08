@@ -1,6 +1,6 @@
 [gd_scene load_steps=74 format=3 uid="uid://dl32l5akqsw1y"]
 
-[ext_resource type="Script" path="res://Scripts/bird.gd" id="1_4aw8w"]
+[ext_resource type="Script" uid="uid://cgfynuy53v5ha" path="res://Scripts/bird.gd" id="1_4aw8w"]
 [ext_resource type="PackedScene" uid="uid://b7gqpoye0w0qh" path="res://Scenes/Fire_Ball.tscn" id="2_inmel"]
 [ext_resource type="Texture2D" uid="uid://cuv8rqtr38iag" path="res://Sprites/Birds/Bird.png" id="4_000e6"]
 [ext_resource type="Texture2D" uid="uid://bhh46i0e50dla" path="res://Sprites/Birds/Flamingo/Flamingos-Sheet.png" id="4_1qhoh"]

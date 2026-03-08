@@ -1,9 +1,9 @@
 [gd_scene load_steps=74 format=3 uid="uid://sqrrgaxa43wa"]
 
-[ext_resource type="Script" path="res://Scripts/bird.gd" id="1_p0exi"]
+[ext_resource type="Script" uid="uid://cgfynuy53v5ha" path="res://Scripts/bird.gd" id="1_p0exi"]
 [ext_resource type="PackedScene" uid="uid://c4wi40ve7cdhn" path="res://Scenes/Bullets/Bullet.tscn" id="2_fbds7"]
 [ext_resource type="Texture2D" uid="uid://cuv8rqtr38iag" path="res://Sprites/Birds/Bird.png" id="3_wc40m"]
-[ext_resource type="Script" path="res://Scripts/Skills/skill_bullet_shooter.gd" id="4_p5evn"]
+[ext_resource type="Script" uid="uid://plf68bxopdsp" path="res://Scripts/Skills/skill_bullet_shooter.gd" id="4_p5evn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_66d64"]
 

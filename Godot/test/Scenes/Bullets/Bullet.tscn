@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://c4wi40ve7cdhn"]
 
-[ext_resource type="Script" path="res://Scripts/bullet.gd" id="1_k6o55"]
+[ext_resource type="Script" uid="uid://bbrt74l0h50cy" path="res://Scripts/bullet.gd" id="1_k6o55"]
 [ext_resource type="Texture2D" uid="uid://bdx2e38fikl76" path="res://Sprites/Bullet.png" id="2_rwfua"]
 [ext_resource type="Texture2D" uid="uid://roi01ult4g47" path="res://Sprites/FireBall/Sheets/ShotLoop-Sheet.png" id="3_ki32s"]
 

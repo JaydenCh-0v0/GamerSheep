@@ -1,10 +1,10 @@
 [gd_scene load_steps=23 format=4 uid="uid://c12a86lcvpj0p"]
 
-[ext_resource type="Script" path="res://Scripts/gameManager.gd" id="1_3whug"]
+[ext_resource type="Script" uid="uid://btstrlcdu3vu6" path="res://Scripts/gameManager.gd" id="1_3whug"]
 [ext_resource type="Texture2D" uid="uid://dbja46ggythso" path="res://Sprites/Tiles/Forest/ForestBackground.png" id="1_x0p1m"]
 [ext_resource type="PackedScene" uid="uid://c4ysfw3dfabx2" path="res://Scenes/Player.tscn" id="2_0gtd2"]
 [ext_resource type="Texture2D" uid="uid://ds36o8ebo13fv" path="res://Sprites/Tiles/Other/wall.png" id="2_8rh3c"]
-[ext_resource type="Script" path="res://Scripts/Managers/energy_manager.gd" id="3_e1wwi"]
+[ext_resource type="Script" uid="uid://denwuns7qf14a" path="res://Scripts/Managers/energy_manager.gd" id="3_e1wwi"]
 [ext_resource type="Texture2D" uid="uid://dentwowp56mpn" path="res://Sprites/Tiles/Other/Sprite-0002.png" id="3_emeg1"]
 [ext_resource type="PackedScene" uid="uid://gkp4p1dw13l4" path="res://Scenes/Bird_spawn_list.tscn" id="4_8lyiq"]
 [ext_resource type="Texture2D" uid="uid://ch1jwmrnu36dd" path="res://Sprites/Tiles/Other/Sprite-0001.png" id="4_mjg6a"]

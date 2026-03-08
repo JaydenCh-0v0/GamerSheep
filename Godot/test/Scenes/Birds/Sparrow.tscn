@@ -1,6 +1,6 @@
 [gd_scene load_steps=73 format=3 uid="uid://hacnu11rnp3e"]
 
-[ext_resource type="Script" path="res://Scripts/bird.gd" id="1_5p58k"]
+[ext_resource type="Script" uid="uid://cgfynuy53v5ha" path="res://Scripts/bird.gd" id="1_5p58k"]
 [ext_resource type="PackedScene" uid="uid://c4wi40ve7cdhn" path="res://Scenes/Bullets/Bullet.tscn" id="2_2orew"]
 [ext_resource type="Texture2D" uid="uid://cuv8rqtr38iag" path="res://Sprites/Birds/Bird.png" id="3_ph1hn"]
 
