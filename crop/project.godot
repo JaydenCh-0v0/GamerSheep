@@ -1,0 +1,61 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Crop"
+config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://icon.svg"
+
+[display]
+
+window/stretch/mode="canvas_items"
+window/per_pixel_transparency/allowed=true
+
+[file_customization]
+
+folder_colors={
+"res://art/": "purple",
+"res://gd/": "red",
+"res://tres/": "gray",
+"res://tscn/": "yellow",
+"res://tscn/test/": "green"
+}
+
+[input]
+
+left_click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(393, 17),"global_position":Vector2(402, 65),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+right_click={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(413, 13),"global_position":Vector2(422, 61),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[layer_names]
+
+2d_physics/layer_1="Ground"
+2d_navigation/layer_1="Player"
+2d_physics/layer_2="Player"
+2d_navigation/layer_2="NPC"
+2d_physics/layer_3="Interactable"
+2d_navigation/layer_3="MOB"
+2d_physics/layer_5="Pickable"
+2d_physics/layer_6="Collectable"
+2d_physics/layer_7="Hit"
+2d_physics/layer_8="Hitable"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+viewport/hdr_2d=true

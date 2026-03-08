@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://d0jmgxm4kumdi"
+path="res://.godot/imported/farming n foraging - all.png-a6c01cc728ce30791347e59a6910072e.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://art/Hana/Hana Caraka - Farming n Foraging [sample]/farming n foraging - all.png"
+dest_files=["res://.godot/imported/farming n foraging - all.png-a6c01cc728ce30791347e59a6910072e.ctex"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

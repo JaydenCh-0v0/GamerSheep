@@ -1,0 +1,66 @@
+[gd_scene load_steps=12 format=3 uid="uid://c4hvsujyag2xc"]
+
+[ext_resource type="Script" uid="uid://cn5jsvype2s12" path="res://gd/natures/tree.gd" id="1_c5itp"]
+[ext_resource type="Texture2D" uid="uid://ckqf8ptjkfheb" path="res://art/Hana/Hana Caraka - Topdown Tileset [sample]/Props/Props-All.png" id="1_vtuoh"]
+[ext_resource type="PackedScene" uid="uid://ya2uc80tfbge" path="res://tscn/components/hitable_component.tscn" id="2_ny42m"]
+[ext_resource type="Shader" uid="uid://bmxj5altkt2im" path="res://gdshader/shake.gdshader" id="2_wyuai"]
+[ext_resource type="Texture2D" uid="uid://b3akgu7dfead2" path="res://art/JD/Chars/shadow.png" id="4_v3uay"]
+[ext_resource type="PackedScene" uid="uid://bdy4577msgq8l" path="res://tscn/components/damage_component.tscn" id="4_w5v2i"]
+[ext_resource type="PackedScene" uid="uid://b3vcbyv71duuf" path="res://tscn/components/hover_component.tscn" id="6_0twgd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vtuoh"]
+radius = 2.0
+height = 8.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0twgd"]
+resource_local_to_scene = true
+shader = ExtResource("2_wyuai")
+shader_parameter/shake_intensity = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/random_offset = 0.0
+shader_parameter/outline_width = 0.0
+shader_parameter/glow_color = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny42m"]
+atlas = ExtResource("1_vtuoh")
+region = Rect2(112, 0, 32, 48)
+margin = Rect2(1, 0, 2, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c5itp"]
+radius = 2.0
+height = 14.0
+
+[node name="Tree" type="StaticBody2D"]
+script = ExtResource("1_c5itp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_vtuoh")
+
+[node name="Shadow" type="Sprite2D" parent="CollisionShape2D"]
+position = Vector2(1.19209e-07, -6.25278e-13)
+rotation = -1.5708
+scale = Vector2(3.5, 2)
+texture = ExtResource("4_v3uay")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_0twgd")
+position = Vector2(0, -18)
+texture = SubResource("AtlasTexture_ny42m")
+
+[node name="HitableComponent" parent="." instance=ExtResource("2_ny42m")]
+accepted_tool = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitableComponent"]
+position = Vector2(0, -6)
+shape = SubResource("CapsuleShape2D_c5itp")
+debug_color = Color(1, 0.6, 0.701961, 0.419608)
+
+[node name="DamageComponent" parent="." instance=ExtResource("4_w5v2i")]
+max_damage = 3
+
+[node name="HoverComponent" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_0twgd")]
+sprite = NodePath("../Sprite2D")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HoverComponent"]
+polygon = PackedVector2Array(-5, 1, -5, -1, -7, -3, -8, -6, -1, -38, 1, -38, 8, -6, 7, -3, 5, -1, 5, 1)

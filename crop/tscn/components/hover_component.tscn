@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3vcbyv71duuf"]
+
+[ext_resource type="Script" uid="uid://dskhp1w8prnm8" path="res://gd/components/hover_component.gd" id="1_qmma6"]
+[ext_resource type="Shader" uid="uid://dy1fdkso2hofh" path="res://gdshader/glow.gdshader" id="1_vsjv8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8hkw"]
+shader = ExtResource("1_vsjv8")
+shader_parameter/outline_width = 1.0
+shader_parameter/glow_color = Color(1, 1, 0, 0.7)
+
+[node name="HoverComponent" type="Area2D"]
+material = SubResource("ShaderMaterial_r8hkw")
+collision_layer = 16
+collision_mask = 64
+script = ExtResource("1_qmma6")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

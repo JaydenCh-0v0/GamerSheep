@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://dumheolkboaa5"]
+
+[ext_resource type="PackedScene" uid="uid://bba4e3cyh44tg" path="res://tscn/char/player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://dfmj4kp2bddd8" path="res://tscn/char/mob/chicken_v1.tscn" id="2_chicken"]
+
+[node name="TestAnimalPickup" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(100, 100)
+
+[node name="Chicken" parent="." instance=ExtResource("2_chicken")]
+position = Vector2(128, 101)
+
+[node name="Instructions" type="Label" parent="."]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 400.0
+offset_bottom = 80.0
+scale = Vector2(0.5, 0.5)
+text = "测试动物拾取功能：
+1. 移动玩家靠近鸡
+2. 左键点击鸡拾取
+3. 再次左键点击放下鸡
+4. 鸡会被放置在玩家前方"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(116, 66)
+zoom = Vector2(5, 5)
